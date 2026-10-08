@@ -21,7 +21,7 @@ function Bridge.install(mod, Growth)
     return originalCalc(speciesDef, level, dvs, statExp)
   end
 
-  local originalStarter = Follower.starterInParty
+  -- Repair existing v0.1.0 saves opportunistically when Yellow checks the\n  -- partner follower. No extra species or Pokédex slot is introduced.\n  local function syncPartnerDex(save)\n    if not (save and save.party and save.pokedex) then return end\n    local found = false\n    for _, mon in ipairs(save.party) do\n      if mon.species == ID then found = true break end\n    end\n    if not found then return end\n    save.pokedex.seen = save.pokedex.seen or {}\n    save.pokedex.owned = save.pokedex.owned or {}\n    save.pokedex.seen.PIKACHU = true\n    save.pokedex.owned.PIKACHU = true\n  end\n\n  local originalStarter = Follower.starterInParty
   Follower.starterInParty = function(save, healthy)
     for _, mon in ipairs(save.party or {}) do
       if mon.species == ID and (not healthy or (mon.hp or 0) > 0) then
