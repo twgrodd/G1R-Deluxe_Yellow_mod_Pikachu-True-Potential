@@ -32,27 +32,12 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Validate version and mod identity
+      - name: Validate manifest version and changelog
         id: meta
         env:
           REQUESTED_VERSION: ${{ inputs.version }}
         run: |
-          set -euo pipefail
-          python3 - <<'PY' >> "$GITHUB_OUTPUT"
-          import json, os, re, sys
-          with open('manifest.json', encoding='utf-8') as f:
-              manifest = json.load(f)
-          version = str(manifest.get('version', ''))
-          requested = os.environ['REQUESTED_VERSION'].strip()
-          if manifest.get('id') != 'pikachu_true_potential':
-              sys.exit('::error::Unexpected mod ID')
-          if not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+', version):
-              sys.exit('::error::Manifest version must be X.Y.Z')
-          if requested != version:
-              sys.exit('::error::Requested version must match manifest.json')
-          print('version=' + version)
-          print('tag=v' + version)
-          PY
+          python3 tools/release_metadata.py --version "$REQUESTED_VERSION" --github-output "$GITHUB_OUTPUT"
 
       - name: Check that the release does not exist
         env:
@@ -78,6 +63,7 @@ jobs:
       - name: Package installable mod
         env:
           VERSION: ${{ steps.meta.outputs.version }}
+          ZIP_NAME: ${{ steps.meta.outputs.zip_name }}
         run: |
           set -euo pipefail
           mkdir -p dist
@@ -92,26 +78,38 @@ jobs:
           assert manifest['version'] == sys.argv[2]
           assert manifest['id'] == 'pikachu_true_potential'
           PY
-          zip_path="$GITHUB_WORKSPACE/dist/pikachu_true_potential-$VERSION.zip"
+          zip_path="$GITHUB_WORKSPACE/dist/$ZIP_NAME"
           (cd "$stage" && zip -q "$zip_path" ./*)
           unzip -l "$zip_path"
-          (cd dist && sha256sum "pikachu_true_potential-$VERSION.zip" > sha256sums.txt)
+          (cd dist && sha256sum "$ZIP_NAME" > sha256sums.txt)
 
       - name: Publish GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.meta.outputs.tag }}
           VERSION: ${{ steps.meta.outputs.version }}
+          ZIP_NAME: ${{ steps.meta.outputs.zip_name }}
           PRERELEASE: ${{ inputs.prerelease }}
         run: |
           set -euo pipefail
-          notes="Install from MODS > Import mod .zip. See README.md for implementation status."
+          python3 tools/release_metadata.py --version "$VERSION"
+          python3 - "$VERSION" > "$RUNNER_TEMP/release-notes.md" <<'PY'
+          import re, sys
+          changelog = open("CHANGELOG.md", encoding="utf-8").read()
+          version = re.escape(sys.argv[1])
+          pattern = r"(?ms)^## \\[" + version + r"\\][^\\n]*\\n(.*?)(?=^## \\[|\\Z)"
+          match = re.search(pattern, changelog)
+          if not match:
+              sys.exit("Missing release changelog")
+          print(match.group(1).strip())
+          print("\\nInstall via MODS > Import mod .zip.")
+          PY
           args=()
           if [ "$PRERELEASE" = "true" ]; then args+=(--prerelease); fi
           gh release create "$TAG" \
             --target "$GITHUB_SHA" \
             --title "Pikachu True Potential v$VERSION" \
-            --notes "$notes" \
+            --notes-file "$RUNNER_TEMP/release-notes.md" \
             "${args[@]}" \
-            "dist/pikachu_true_potential-$VERSION.zip" \
+            "dist/$ZIP_NAME" \
             "dist/sha256sums.txt"
