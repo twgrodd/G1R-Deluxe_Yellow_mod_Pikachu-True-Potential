@@ -1,6 +1,18 @@
 # Changelog
 
-## [0.1.1] - 2026-10-08\n\n### Fixed\n- Register original Pikachu (#025) as seen and owned when Oak awards True Potential Pikachu.\n- Repair Pokédex ownership for existing v0.1.0 saves when the partner follower is checked, without changing the custom species ID or the starter confirmation text.\n\n## [0.1.0] - 2026-10-08
+## [0.1.2] - 2026-10-08
+
+### Fixed
+- Repair literal escaped newline sequences in Lua code that caused `originalStarter` to be nil during Pokémon Center healing.
+- Restore the Pokédex ownership migration and starter gift marking code that was accidentally commented out.
+
+## [0.1.1] - 2026-10-08
+
+### Fixed
+- Register original Pikachu (#025) as seen and owned when Oak awards True Potential Pikachu.
+- Repair Pokédex ownership for existing v0.1.0 saves when the partner follower is checked, without changing the custom species ID or the starter confirmation text.
+
+## [0.1.0] - 2026-10-08
 
 ### Added
 - Independent `TRUE_POTENTIAL_PIKACHU` species definition based on imported Yellow Pikachu.
