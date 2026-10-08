@@ -7,6 +7,7 @@ function Bridge.install(mod, Growth)
   local Stats = require("src.pokemon.Stats")
   local Follower = require("src.world.PikachuFollower")
   local Version = require("src.core.GameVersion")
+  local Commands = require("src.script.Commands")
 
   -- The species definition stays immutable. Only calculations for the
   -- internal partner species receive a level-specific copy.
@@ -34,10 +35,32 @@ function Bridge.install(mod, Growth)
     save.pokedex.owned = save.pokedex.owned or {}
     save.pokedex.seen.PIKACHU = true
     save.pokedex.owned.PIKACHU = true
+    -- The engine counts species keys, not National Dex numbers.
+    -- Never let the custom internal ID count as a second owned Pokémon.
+    save.pokedex.seen[ID] = nil
+    save.pokedex.owned[ID] = nil
+  end
+
+  -- Existing saves may contain both species keys from v0.1.1/0.1.2.
+  -- Normalize before Oak checks the count so his parcel cutscene is reachable.
+  local originalDexCheck = Commands.check_dex_owned
+  Commands.check_dex_owned = function(ctx, count)
+    syncPartnerDex(ctx and ctx.save)
+    return originalDexCheck(ctx, count)
+  end
+
+  -- The engine adds the custom species key after pokemon.before_give.
+  -- Normalize once the gift and optional nickname prompt are finished.
+  local originalGive = Commands.give_pokemon
+  Commands.give_pokemon = function(ctx, ...)
+    local result = originalGive(ctx, ...)
+    syncPartnerDex(ctx and ctx.save)
+    return result
   end
 
   local originalStarter = Follower.starterInParty
   Follower.starterInParty = function(save, healthy)
+    syncPartnerDex(save)
     for _, mon in ipairs(save.party or {}) do
       if mon.species == ID and (not healthy or (mon.hp or 0) > 0) then
         return mon
