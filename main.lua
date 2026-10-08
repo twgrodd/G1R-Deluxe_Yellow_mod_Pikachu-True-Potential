@@ -33,6 +33,33 @@ return function(mod)
   partner.evolutions = {}
 
   mod.content.pokemon:register(PARTNER_ID, partner)
-  mod.log:info("Registered %s (starter replacement and growth not yet active)",
-    PARTNER_ID)
+  local bridgeSource = mod:read("engine_bridge.lua")
+  if not bridgeSource then
+    mod.log:warn("engine_bridge.lua missing; starter replacement disabled")
+    return
+  end
+  local bridgeChunk, bridgeErr = load(bridgeSource, "@pikachu_true_potential/engine_bridge.lua")
+  if not bridgeChunk then
+    mod.log:warn("Could not load engine bridge: %s", tostring(bridgeErr))
+    return
+  end
+  bridgeChunk().install(mod, Growth)
+
+  local function originalYellowStarter(ctx)
+    local save = ctx and ctx.save
+    local map = ctx and ctx.overworld and ctx.overworld.map
+    return map and map.id == "OAKS_LAB"
+      and save and save.flags and not save.flags.EVENT_GOT_STARTER
+      and #(save.party or {}) == 0
+  end
+
+  mod.events:on("pokemon.before_give", function(gift)
+    if gift.species ~= "PIKACHU" or not originalYellowStarter(gift.ctx) then
+      return
+    end
+    gift.species = PARTNER_ID
+    mod.log:info("Oak's Yellow starter is now True Potential Pikachu")
+  end)
+
+  mod.log:info("Registered %s and enabled Yellow starter replacement", PARTNER_ID)
 end
