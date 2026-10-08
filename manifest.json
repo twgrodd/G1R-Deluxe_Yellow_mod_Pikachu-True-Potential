@@ -1,14 +1,14 @@
 {
-  "id": "remove_slow_levelup_group",
-  "name": "Gen 2 - Remove Slow Level-Up Group",
-  "version": "1.1.0",
+  "id": "pikachu-true-potential",
+  "name": "Pikachu True Potential",
+  "version": "0.1.0",
   "entry": "main.lua",
   "api": 2,
   "profile": "content",
   "category": "GAMEPLAY",
   "games": [
-    "gen2"
+    "yellow"
   ],
-  "github": "twgrodd/gen1recomp-Mod-Gen2-Remove-Slow-Levelup-Group",
+  "github": "twgrodd/G1R-Deluxe_Yellow_mod_Pikachu-True-Potential",
   "description": "Diagnostic build: reports the Gen 2 growthRate data for Miltank and other Slow-growth species without changing their growth rate yet."
 }
