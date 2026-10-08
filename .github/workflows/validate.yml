@@ -34,3 +34,5 @@ jobs:
           assert re.fullmatch(r'\d+\.\d+\.\d+', m['version'])
           print('Manifest metadata valid')
           PY
+      - name: Check release metadata consistency
+        run: python3 tools/release_metadata.py
