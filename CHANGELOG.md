@@ -7,6 +7,9 @@
 - Pure level 5–30 Raichu-potential growth function and standalone table tests.
 - Yellow-only mod manifest and initial architecture documentation.
 
+### Manifest and packaging
+- Aligned manifest metadata with G1R Deluxe documentation: explicit engine compatibility range, GAMEPLAY category, experimental flag, and link-affecting content declaration.
+
 ### Experimental implementation
 - Added Yellow Oak's Lab starter gift replacement with a separate partner species.
 - Added partner-specific effective base stats via the Gen 1 stat calculator.
