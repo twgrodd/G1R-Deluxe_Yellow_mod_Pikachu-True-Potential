@@ -54,26 +54,21 @@ function Bridge.install(mod, Growth)
     return originalHappiness(save, reason, mon)
   end
 
-  local previousSpawn = Follower.setShouldSpawn(function(game, ow)
-    if not Version.isYellow() then return false end
-    local save = game.save
-    if not (save and save.flags and save.flags.EVENT_GOT_STARTER) then return false end
-    if save.pikachuInBall == nil then
-      if not save.flags.EVENT_BATTLED_RIVAL_IN_OAKS_LAB then return false end
-    elseif save.pikachuInBall then
-      return false
+  local originalLearned = Follower.onMoveLearned
+  Follower.onMoveLearned = function(save, mon, moveId)
+    if mon and mon.species == ID then
+      local view = {}
+      for key, value in pairs(mon) do view[key] = value end
+      view.species = "PIKACHU"
+      return originalLearned(save, view, moveId)
     end
-    if save.onBike or (ow.player and ow.player.surfing) then return false end
-    if not (game.data.sprites and game.data.sprites.SPRITE_PIKACHU) then return false end
-    for _, mon in ipairs(save.party or {}) do
-      if mon.species == ID and (mon.hp or 0) > 0 then return true end
-    end
-    return false
-  end)
-  -- Preserve the vanilla follower when the player has an ordinary Pikachu.
-  -- This is set as a second wrapper so the previous callback remains intact.
-  Follower.setShouldSpawn(function(game, ow)
-    if previousSpawn(game, ow) then return true end
+    return originalLearned(save, mon, moveId)
+  end
+
+  -- Preserve the original follower logic, extending it for our new species.
+  local previousSpawn
+  previousSpawn = Follower.setShouldSpawn(function(game, ow)
+    if previousSpawn and previousSpawn(game, ow) then return true end
     local save = game.save
     if not (save and save.party) then return false end
     -- Only the true partner can activate this alternate path.
