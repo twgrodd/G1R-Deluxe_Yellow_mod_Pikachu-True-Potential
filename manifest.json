@@ -13,7 +13,9 @@
   "dependencies": [],
   "optional_dependencies": [],
   "conflicts": [],
-  "permissions": [],
+  "permissions": [
+    "engine_internals"
+  ],
   "github": "twgrodd/G1R-Deluxe_Yellow_mod_Pikachu-True-Potential",
-  "description": "Early development: registers a distinct Yellow partner Pikachu species; starter swapping and growth integration not yet enabled."
+  "description": "Yellow partner Pikachu with a separate species entry and level 5–30 Raichu-potential growth. Experimental."
 }
