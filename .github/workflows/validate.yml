@@ -1,0 +1,36 @@
+name: Validate mod
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  growth-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lua
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.4
+      - name: Check Lua syntax
+        run: |
+          luac5.4 -p main.lua growth.lua tests/growth_test.lua
+      - name: Run growth table tests
+        run: lua5.4 tests/growth_test.lua
+      - name: Validate manifest metadata
+        run: |
+          python3 - <<'PY'
+          import json, re
+          m = json.load(open('manifest.json', encoding='utf-8'))
+          assert m['id'] == 'pikachu_true_potential'
+          assert m['games'] == ['yellow']
+          assert m['entry'] == 'main.lua'
+          assert re.fullmatch(r'\d+\.\d+\.\d+', m['version'])
+          print('Manifest metadata valid')
+          PY
