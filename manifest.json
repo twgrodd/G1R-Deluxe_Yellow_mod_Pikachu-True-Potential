@@ -5,7 +5,7 @@
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
-  "category": "CONTENT",
+  "category": "GAMEPLAY",
   "games": [
     "yellow"
   ],
@@ -17,5 +17,8 @@
     "engine_internals"
   ],
   "github": "twgrodd/G1R-Deluxe_Yellow_mod_Pikachu-True-Potential",
-  "description": "Yellow partner Pikachu with a separate species entry and level 5–30 Raichu-potential growth. Experimental."
+  "description": "Yellow partner Pikachu with a separate species entry and level 5–30 Raichu-potential growth. Experimental.",
+  "game_version": ">=0.0.0-0 <2.0.0",
+  "affects_link": true,
+  "experimental": true
 }
