@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.3] - 2026-10-08
+
+### Fixed
+- Prevent True Potential Pikachu from counting as a second owned Pokédex species and blocking Oak's Parcel handover.
+- Migrate v0.1.1/v0.1.2 save data during Oak's owned-count check and follower checks.
+- Normalize the Pokédex after receiving the starter, while preserving the regular Pikachu #025 ownership entry.
+
+### Pending
+- Optional YES/NO starter variant selection requires a separate script-level interaction; the existing starter confirmation remains unchanged.
+
 ## [0.1.2] - 2026-10-08
 
 ### Fixed
