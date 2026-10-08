@@ -54,7 +54,16 @@ return function(mod)
     if gift.species ~= "PIKACHU" or not originalYellowStarter(gift.ctx) then
       return
     end
-    -- Dex bookkeeping uses species keys, not shared dex numbers.\n    -- Mirror the owned/seen record to vanilla Pikachu (#025).\n    local dex = gift.ctx and gift.ctx.save and gift.ctx.save.pokedex\n    if dex then\n      dex.seen = dex.seen or {}\n      dex.owned = dex.owned or {}\n      dex.seen.PIKACHU = true\n      dex.owned.PIKACHU = true\n    end\n    gift.species = PARTNER_ID
+    -- Dex bookkeeping uses species keys, not shared dex numbers.
+    -- Mirror the owned/seen record to vanilla Pikachu (#025).
+    local dex = gift.ctx and gift.ctx.save and gift.ctx.save.pokedex
+    if dex then
+      dex.seen = dex.seen or {}
+      dex.owned = dex.owned or {}
+      dex.seen.PIKACHU = true
+      dex.owned.PIKACHU = true
+    end
+    gift.species = PARTNER_ID
     mod.log:info("Oak's Yellow starter is now True Potential Pikachu")
   end)
 
