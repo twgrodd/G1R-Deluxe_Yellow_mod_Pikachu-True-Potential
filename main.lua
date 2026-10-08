@@ -1,7 +1,4 @@
--- Initial species registry for Pikachu True Potential.
--- Intentionally *does not* replace Oak's Pikachu yet: the upstream Yellow
--- follower / happiness code checks for literal species == "PIKACHU".
--- Starter replacement will be enabled only with compatibility support.
+-- True Potential Pikachu: distinct internal species, vanilla Pokédex identity.
 local PARTNER_ID = "TRUE_POTENTIAL_PIKACHU"
 
 return function(mod)
@@ -57,7 +54,7 @@ return function(mod)
     if gift.species ~= "PIKACHU" or not originalYellowStarter(gift.ctx) then
       return
     end
-    gift.species = PARTNER_ID
+    -- Dex bookkeeping uses species keys, not shared dex numbers.\n    -- Mirror the owned/seen record to vanilla Pikachu (#025).\n    local dex = gift.ctx and gift.ctx.save and gift.ctx.save.pokedex\n    if dex then\n      dex.seen = dex.seen or {}\n      dex.owned = dex.owned or {}\n      dex.seen.PIKACHU = true\n      dex.owned.PIKACHU = true\n    end\n    gift.species = PARTNER_ID
     mod.log:info("Oak's Yellow starter is now True Potential Pikachu")
   end)
 
