@@ -1,8 +1,12 @@
 name: Release Pikachu True Potential
 
 # Based on the release workflows in twgrodd's other G1R Deluxe mods.
-# Intentionally manual while the partner-species integration is unfinished.
+# Automated on intentional release-workflow changes; also supports manual runs.
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/release.yml'
   workflow_dispatch:
     inputs:
       version:
@@ -37,7 +41,11 @@ jobs:
         env:
           REQUESTED_VERSION: ${{ inputs.version }}
         run: |
-          python3 tools/release_metadata.py --version "$REQUESTED_VERSION" --github-output "$GITHUB_OUTPUT"
+          if [ -n "$REQUESTED_VERSION" ]; then
+            python3 tools/release_metadata.py --version "$REQUESTED_VERSION" --github-output "$GITHUB_OUTPUT"
+          else
+            python3 tools/release_metadata.py --github-output "$GITHUB_OUTPUT"
+          fi
 
       - name: Check that the release does not exist
         env:
@@ -89,7 +97,7 @@ jobs:
           TAG: ${{ steps.meta.outputs.tag }}
           VERSION: ${{ steps.meta.outputs.version }}
           ZIP_NAME: ${{ steps.meta.outputs.zip_name }}
-          PRERELEASE: ${{ inputs.prerelease }}
+          PRERELEASE: ${{ github.event_name == 'push' || inputs.prerelease }}
         run: |
           set -euo pipefail
           python3 tools/release_metadata.py --version "$VERSION"
