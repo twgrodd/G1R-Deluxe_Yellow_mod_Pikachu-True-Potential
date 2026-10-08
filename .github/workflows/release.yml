@@ -1,0 +1,115 @@
+name: Release Pikachu True Potential
+
+# Based on the release workflows in twgrodd's other G1R Deluxe mods.
+# Intentionally manual while the partner-species integration is unfinished.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (must match manifest.json, e.g. 0.1.0)'
+        required: true
+        type: string
+      prerelease:
+        description: 'Mark this release as a pre-release'
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pikachu-true-potential-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Validate manifest version and changelog
+        id: meta
+        env:
+          REQUESTED_VERSION: ${{ inputs.version }}
+        run: |
+          python3 tools/release_metadata.py --version "$REQUESTED_VERSION" --github-output "$GITHUB_OUTPUT"
+
+      - name: Check that the release does not exist
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.meta.outputs.tag }}
+        run: |
+          set -euo pipefail
+          if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then
+            echo "::error::Tag $TAG already exists"; exit 1
+          fi
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "::error::Release $TAG already exists"; exit 1
+          fi
+
+      - name: Install Lua for tests
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.4
+
+      - name: Test growth progression
+        run: lua5.4 tests/growth_test.lua
+
+      - name: Package installable mod
+        env:
+          VERSION: ${{ steps.meta.outputs.version }}
+          ZIP_NAME: ${{ steps.meta.outputs.zip_name }}
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          stage="$RUNNER_TEMP/pikachu_true_potential"
+          mkdir -p "$stage"
+          # Explicit allowlist prevents shipping tests, GitHub workflows, or ROMs.
+          cp manifest.json main.lua growth.lua engine_bridge.lua mod.card CHANGELOG.md README.md "$stage/"
+          python3 - "$stage/manifest.json" "$VERSION" <<'PY'
+          import json, sys
+          with open(sys.argv[1], encoding='utf-8') as f:
+              manifest = json.load(f)
+          assert manifest['version'] == sys.argv[2]
+          assert manifest['id'] == 'pikachu_true_potential'
+          PY
+          zip_path="$GITHUB_WORKSPACE/dist/$ZIP_NAME"
+          (cd "$stage" && zip -q "$zip_path" ./*)
+          unzip -l "$zip_path"
+          (cd dist && sha256sum "$ZIP_NAME" > sha256sums.txt)
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.meta.outputs.tag }}
+          VERSION: ${{ steps.meta.outputs.version }}
+          ZIP_NAME: ${{ steps.meta.outputs.zip_name }}
+          PRERELEASE: ${{ inputs.prerelease }}
+        run: |
+          set -euo pipefail
+          python3 tools/release_metadata.py --version "$VERSION"
+          python3 - "$VERSION" > "$RUNNER_TEMP/release-notes.md" <<'PY'
+          import re, sys
+          changelog = open("CHANGELOG.md", encoding="utf-8").read()
+          version = re.escape(sys.argv[1])
+          pattern = r"(?ms)^## \[" + version + r"\][^\n]*\n(.*?)(?=^## \[|\Z)"
+          match = re.search(pattern, changelog)
+          if not match:
+              sys.exit("Missing release changelog")
+          print(match.group(1).strip())
+          print("\nInstall via MODS > Import mod .zip.")
+          PY
+          args=()
+          if [ "$PRERELEASE" = "true" ]; then args+=(--prerelease); fi
+          gh release create "$TAG" \
+            --target "$GITHUB_SHA" \
+            --title "Pikachu True Potential v$VERSION" \
+            --notes-file "$RUNNER_TEMP/release-notes.md" \
+            "${args[@]}" \
+            "dist/$ZIP_NAME" \
+            "dist/sha256sums.txt"

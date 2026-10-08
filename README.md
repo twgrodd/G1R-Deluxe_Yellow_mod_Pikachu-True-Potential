@@ -2,7 +2,7 @@
 
 A Pokémon Yellow mod for G1R Deluxe / Gen1Recomp. Yellow's original partner Pikachu will grow from ordinary Pikachu strength at level 5 to Raichu-level potential at level 30, without evolving.
 
-**Status: early development / not playable yet.** This repository currently implements the independent partner-species definition and a pure growth formula. The starter replacement, all stat-recalculation paths, and Yellow follower compatibility are still being integrated. Please do not install it expecting complete gameplay behavior.
+**Status: experimental / not in-game tested.** The separate species, Oak's Lab starter gift replacement, level-dependent stat calculation, and Yellow follower bridge are now coded. Gameplay behavior, saves, PC storage and evolution refusal still require verification before a stable release.
 
 ## Design
 
@@ -24,9 +24,9 @@ A Pokémon Yellow mod for G1R Deluxe / Gen1Recomp. Yellow's original partner Pik
 
 ## Architecture and next integration steps
 
-The new species must be registered before Yellow's starter gift is created. However, the current upstream `src/world/PikachuFollower.lua` checks for the literal species ID `PIKACHU` in following, happiness, and identity handling. Simply replacing the gift with a new ID **would break Yellow's partner behavior**. That requires a compatibility bridge before enabling the gift replacement.
+The new species must be registered before Yellow's starter gift is created. However, the current upstream `src/world/PikachuFollower.lua` checks for the literal species ID `PIKACHU` in following, happiness, and identity handling. The experimental `engine_bridge.lua` now extends the stat calculator and several follower methods to recognize our separate species. The bridge requires `engine_internals` permission and is not yet proven across all game interactions.
 
-Similarly, the Gen 1 `src/pokemon/Stats.lua` stat calculator reads static species base stats. Replacing a species's baseStats at runtime would affect unrelated instances and may produce inconsistent stats. The mod must compute effective stats only for its distinct partner and integrate with all stat recalculation and leveling paths. The independent `growth.lua` module is the single source of truth for the proposed effective base stats.
+Similarly, the Gen 1 `src/pokemon/Stats.lua` stat calculator reads static species base stats. Replacing a species's baseStats at runtime would affect unrelated instances and may produce inconsistent stats. The mod now intercepts `Stats.calc` only for the distinct partner species. All stat recalculation and leveling paths still need integration tests. The independent `growth.lua` module is the single source of truth for the proposed effective base stats.
 
 Upstream: https://github.com/bryanthaboi/gen1recomp (branch `dev`). No ROM data or extracted assets are included.
 
@@ -42,3 +42,18 @@ python3 tools/modkit.py lint mods/pikachu_true_potential
 ```
 
 These modkit checks have **not** been run yet.
+
+## Release versioning policy
+
+**One release = one version, everywhere.** Before publishing a new version:
+
+1. Update `manifest.json`'s `version` (for example, `0.2.0`).
+2. Add a new **topmost** `## [0.2.0] - YYYY-MM-DD` section in `CHANGELOG.md` with actual changes. Keep older entries.
+3. Merge those changes into `main`; run the validation workflow.
+4. Trigger **Release Pikachu True Potential** with the exact same version.
+
+The workflow refuses to release if the requested version, manifest, or newest changelog section differ. It derives the GitHub tag (`v0.2.0`) and ZIP filename (`pikachu_true_potential-0.2.0.zip`) directly from the manifest version, includes the changelog in the ZIP, and uses that version's changelog section as GitHub Release notes. Existing tags/releases are never overwritten.
+
+Check locally using `python3 tools/release_metadata.py`. For example, `python3 tools/release_metadata.py --version 0.2.0` validates an intended release. A workflow-only change does not itself require a version bump; bump the version and changelog when publishing a new release.
+
+**Note:** The mod is currently unfinished. A successful release packaging job does not imply that starter substitution, follower compatibility, or in-game stat growth have been implemented.
