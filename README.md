@@ -42,3 +42,18 @@ python3 tools/modkit.py lint mods/pikachu_true_potential
 ```
 
 These modkit checks have **not** been run yet.
+
+## Release versioning policy
+
+**One release = one version, everywhere.** Before publishing a new version:
+
+1. Update `manifest.json`'s `version` (for example, `0.2.0`).
+2. Add a new **topmost** `## [0.2.0] - YYYY-MM-DD` section in `CHANGELOG.md` with actual changes. Keep older entries.
+3. Merge those changes into `main`; run the validation workflow.
+4. Trigger **Release Pikachu True Potential** with the exact same version.
+
+The workflow refuses to release if the requested version, manifest, or newest changelog section differ. It derives the GitHub tag (`v0.2.0`) and ZIP filename (`pikachu_true_potential-0.2.0.zip`) directly from the manifest version, includes the changelog in the ZIP, and uses that version's changelog section as GitHub Release notes. Existing tags/releases are never overwritten.
+
+Check locally using `python3 tools/release_metadata.py`. For example, `python3 tools/release_metadata.py --version 0.2.0` validates an intended release. A workflow-only change does not itself require a version bump; bump the version and changelog when publishing a new release.
+
+**Note:** The mod is currently unfinished. A successful release packaging job does not imply that starter substitution, follower compatibility, or in-game stat growth have been implemented.
