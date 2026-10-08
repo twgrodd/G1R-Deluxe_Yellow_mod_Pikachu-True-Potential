@@ -97,12 +97,12 @@ jobs:
           import re, sys
           changelog = open("CHANGELOG.md", encoding="utf-8").read()
           version = re.escape(sys.argv[1])
-          pattern = r"(?ms)^## \\[" + version + r"\\][^\\n]*\\n(.*?)(?=^## \\[|\\Z)"
+          pattern = r"(?ms)^## \[" + version + r"\][^\n]*\n(.*?)(?=^## \[|\Z)"
           match = re.search(pattern, changelog)
           if not match:
               sys.exit("Missing release changelog")
           print(match.group(1).strip())
-          print("\\nInstall via MODS > Import mod .zip.")
+          print("\nInstall via MODS > Import mod .zip.")
           PY
           args=()
           if [ "$PRERELEASE" = "true" ]; then args+=(--prerelease); fi
