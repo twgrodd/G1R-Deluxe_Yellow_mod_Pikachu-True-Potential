@@ -70,7 +70,7 @@ jobs:
           stage="$RUNNER_TEMP/pikachu_true_potential"
           mkdir -p "$stage"
           # Explicit allowlist prevents shipping tests, GitHub workflows, or ROMs.
-          cp manifest.json main.lua growth.lua mod.card CHANGELOG.md README.md "$stage/"
+          cp manifest.json main.lua growth.lua engine_bridge.lua mod.card CHANGELOG.md README.md "$stage/"
           python3 - "$stage/manifest.json" "$VERSION" <<'PY'
           import json, sys
           with open(sys.argv[1], encoding='utf-8') as f:
