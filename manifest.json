@@ -1,0 +1,19 @@
+{
+  "id": "pikachu_true_potential",
+  "name": "Pikachu True Potential",
+  "version": "0.1.0",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "CONTENT",
+  "games": [
+    "yellow"
+  ],
+  "priority": 100,
+  "dependencies": [],
+  "optional_dependencies": [],
+  "conflicts": [],
+  "permissions": [],
+  "github": "twgrodd/G1R-Deluxe_Yellow_mod_Pikachu-True-Potential",
+  "description": "Early development: registers a distinct Yellow partner Pikachu species; starter swapping and growth integration not yet enabled."
+}
