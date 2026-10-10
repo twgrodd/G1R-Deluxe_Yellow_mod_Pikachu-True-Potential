@@ -26,6 +26,10 @@ local Commands = {
   end,
   give_pokemon = function(ctx)
     ctx.save.pokedex.owned[ID] = true
+    if ctx.game and ctx.game.data and ctx.game.data.text then
+      ctx.pendingPokemonName = ID
+      ctx.capturedNicknamePrompt = ctx.game.data.text._DoYouWantToNicknameText
+    end
     return true
   end,
 }
@@ -96,6 +100,26 @@ assert(not Commands.check_dex_owned({save=save}, 2))
 assert(save.pokedex.owned.PIKACHU and save.pokedex.owned[ID] == nil)
 assert(Commands.give_pokemon({save=save}))
 assert(save.pokedex.owned[ID] == nil and save.pokedex.owned.PIKACHU)
+
+-- Oak's partner gift gets a readable, two-line prompt; other gifts do not.
+local defaultPrompt = "Do you want to nickname {RAM}?"
+local starterSave = {
+  party = {}, flags = {}, pokedex = { seen = {}, owned = {} },
+}
+local starterCtx = {
+  save = starterSave, overworld = { map = { id = "OAKS_LAB" } },
+  game = { data = { text = { _DoYouWantToNicknameText = defaultPrompt } } },
+}
+assert(Commands.give_pokemon(starterCtx, "PIKACHU"))
+assert(starterCtx.capturedNicknamePrompt == "Give a nickname\\nto PIKACHU?")
+assert(starterCtx.game.data.text._DoYouWantToNicknameText == defaultPrompt)
+assert(starterCtx.pendingPokemonName == nil)
+local otherCtx = {
+  save = starterSave, overworld = { map = { id = "VIRIDIAN_CITY" } },
+  game = { data = { text = { _DoYouWantToNicknameText = defaultPrompt } } },
+}
+assert(Commands.give_pokemon(otherCtx, "PIKACHU"))
+assert(otherCtx.capturedNicknamePrompt == defaultPrompt)
 
 local spawn = wrappers[1]
 local game = { save = save }
