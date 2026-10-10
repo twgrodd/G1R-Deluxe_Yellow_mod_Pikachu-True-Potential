@@ -60,3 +60,5 @@ The workflow refuses to release if the requested version, manifest, or newest ch
 Check locally using `python3 tools/release_metadata.py`. For example, `python3 tools/release_metadata.py --version 0.2.0` validates an intended release. A workflow-only change does not itself require a version bump; bump the version and changelog when publishing a new release.
 
 **Note:** A successful packaging job does not prove that new engine compatibility changes work in-game. Keep the mod experimental until the v0.1.5 follower and save regressions are retested.
+
+Partner-specific level-up adjustment: at level 33, **Amnesia** replaces **Agility**. Other level-up moves are unchanged; wild and traded Pikachu still learn Agility. Existing learned moves are not rewritten.
