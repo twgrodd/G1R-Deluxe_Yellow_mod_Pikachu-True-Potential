@@ -68,6 +68,9 @@ jobs:
       - name: Test growth progression
         run: lua5.4 tests/growth_test.lua
 
+      - name: Test bridge integration with mock engine
+        run: lua5.4 tests/bridge_test.lua
+
       - name: Package installable mod
         env:
           VERSION: ${{ steps.meta.outputs.version }}
