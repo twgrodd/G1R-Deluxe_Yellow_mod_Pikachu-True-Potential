@@ -53,6 +53,19 @@ bridge.install(mod, Growth)
 assert(#wrappers == 1 and Stats.calc == wrappedCalc)
 assert(Follower.starterInParty == wrappedStarter)
 assert(Follower.onMoveLearned == originalLearned, "move-learning override must not be installed")
+-- A fresh bridge chunk on the same bus must not duplicate its hook.
+dofile("engine_bridge.lua").install(mod, Growth)
+assert(#wrappers == 1)
+-- A replacement hook bus must receive the public hook even though engine
+-- functions remain wrapped only once.
+local secondWrappers = {}
+local reloadedMod = { hooks = { wrap = function(_, name, fn)
+  assert(name == "world.follower.spawn")
+  secondWrappers[#secondWrappers + 1] = fn
+end }, log = mod.log }
+dofile("engine_bridge.lua").install(reloadedMod, Growth)
+assert(#secondWrappers == 1)
+assert(Stats.calc == wrappedCalc and Follower.starterInParty == wrappedStarter)
 
 local partner = { species = ID, hp = 20, otId = 7, ot = "ASH" }
 local ordinary = { species = "PIKACHU", hp = 20, otId = 7, ot = "ASH" }
