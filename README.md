@@ -2,7 +2,7 @@
 
 A Pokémon Yellow mod for G1R Deluxe / Gen1Recomp. Yellow's original partner Pikachu will grow from ordinary Pikachu strength at level 5 to Raichu-level potential at level 30, without evolving.
 
-**Status: experimental, extensively gameplay-tested through level 100 on v0.1.3.** Starter acquisition, level-dependent stats, following and interactions, Pokédex #025 ownership, Oak's Parcel, and PC deposit/save/restart/withdraw were tested by a player. v0.1.4 changes follower integration and bridge guards and therefore requires fresh in-game regression testing. Other-mod compatibility and hot disabling/re-enabling without restarting remain unverified.
+**Status: experimental (v0.1.5), extensively gameplay-tested through level 100 on v0.1.3.** Starter acquisition, level-dependent stats, following and interactions, Pokédex #025 ownership, Oak's Parcel, and PC deposit/save/restart/withdraw were tested by a player. v0.1.4 changed follower integration and v0.1.5 improves hook-bus registration; both require fresh in-game regression testing. Other-mod compatibility and hot disabling/re-enabling without restarting remain unverified.
 
 ## Design
 
@@ -58,4 +58,4 @@ The workflow refuses to release if the requested version, manifest, or newest ch
 
 Check locally using `python3 tools/release_metadata.py`. For example, `python3 tools/release_metadata.py --version 0.2.0` validates an intended release. A workflow-only change does not itself require a version bump; bump the version and changelog when publishing a new release.
 
-**Note:** A successful packaging job does not prove that new engine compatibility changes work in-game. Keep the mod experimental until the v0.1.4 follower and save regressions are retested.
+**Note:** A successful packaging job does not prove that new engine compatibility changes work in-game. Keep the mod experimental until the v0.1.5 follower and save regressions are retested.
