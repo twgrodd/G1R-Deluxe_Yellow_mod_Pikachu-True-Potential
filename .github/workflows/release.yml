@@ -14,9 +14,9 @@ on:
         required: true
         type: string
       prerelease:
-        description: 'Mark this release as a pre-release'
+        description: 'Mark this release as a pre-release (stable by default)'
         required: true
-        default: true
+        default: false
         type: boolean
 
 permissions:
@@ -102,7 +102,7 @@ jobs:
           TAG: ${{ steps.meta.outputs.tag }}
           VERSION: ${{ steps.meta.outputs.version }}
           ZIP_NAME: ${{ steps.meta.outputs.zip_name }}
-          PRERELEASE: ${{ github.event_name == 'push' || inputs.prerelease }}
+          PRERELEASE: ${{ github.event_name == 'workflow_dispatch' && inputs.prerelease }}
         run: |
           set -euo pipefail
           python3 tools/release_metadata.py --version "$VERSION"
