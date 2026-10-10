@@ -69,7 +69,9 @@ jobs:
         run: lua5.4 tests/growth_test.lua
 
       - name: Test bridge integration with mock engine
-        run: lua5.4 tests/bridge_test.lua
+        run: lua5.4 tests/bridge_test.lua tests/tmhm_test.lua
+      - name: Test partner TM/HM compatibility
+          run: lua5.4 tests/tmhm_test.lua
 
       - name: Package installable mod
         env:
