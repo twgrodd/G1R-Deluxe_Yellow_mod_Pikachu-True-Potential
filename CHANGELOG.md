@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.1.5] - 2026-10-10
+
+### Improved
+- Register the public follower spawn hook for newly created hook buses without stacking process-wide engine wrappers.
+- Keep all six required engine replacements unchanged in gameplay behavior.
+
+### Documentation and tests
+- Document how and why every retained engine replacement works in `docs/ENGINE_OVERRIDES.md`.
+- Expand mock-engine regression coverage for repeated bridge loading and replacement hook buses.
+- Prepare an experimental build for combined testing with other RoddSoft mods.
+
+### Known limitations
+- Combined-mod gameplay compatibility and full hot disable/re-enable are not verified.
+- Continue using a full game restart after enabling or disabling mods.
+
 ## [0.1.4] - 2026-10-10
 
 ### Changed
