@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.0] - 2026-10-10
+
+### First official public release
+- Promote Pikachu True Potential from experimental to stable after player-reported successful gameplay and Crystal Animated Sprites compatibility testing.
+- Oak's Yellow starter Pikachu remains Pikachu #025, follows the player, cannot evolve, and grows from Pikachu's base stats at level 5 to Raichu's at level 30.
+- Partner-only moves: Double Kick at level 9, Amnesia instead of Agility at level 33, and HM02 Fly, HM03 Surf, HM04 Strength, TM26 Earthquake, TM28 Dig.
+- Preserve ordinary wild/traded Pikachu and Raichu without gameplay changes.
+- Include Crystal Animated Sprites with Shiny Visuals compatibility and the shorter starter nickname prompt from v0.1.7.
+- Update player documentation and mod listing to reflect the public release.
+
+### Notes
+- Restart the game after enabling or disabling mods. Full hot unload/reload and every combination of other mods are not guaranteed.
+- Previous pre-release changelog entries remain below for historical reference.
+
 ## [0.1.7] - 2026-10-10
 
 ### Fixes

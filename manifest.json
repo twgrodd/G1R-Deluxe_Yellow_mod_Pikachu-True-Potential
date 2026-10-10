@@ -1,7 +1,7 @@
 {
   "id": "pikachu_true_potential",
   "name": "Pikachu True Potential",
-  "version": "0.1.7",
+  "version": "1.0.0",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -17,8 +17,8 @@
     "engine_internals"
   ],
   "github": "twgrodd/G1R-Deluxe_Yellow_mod_Pikachu-True-Potential",
-  "description": "Yellow partner Pikachu with a separate species entry and level 5–30 Raichu-potential growth. Experimental.",
+  "description": "Yellow partner Pikachu with a separate species entry and level 5–30 Raichu-potential growth.",
   "game_version": ">=0.0.0-0 <2.0.0",
   "affects_link": true,
-  "experimental": true
+  "experimental": false
 }
