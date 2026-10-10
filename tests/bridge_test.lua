@@ -2,7 +2,8 @@
 local Growth = dofile("growth.lua")
 local ID = "TRUE_POTENTIAL_PIKACHU"
 local Stats = { calc = function(def, level) return def.baseStats, level end }
-local Follower = {
+local Follower
+Follower = {
   starterInParty = function(save) return save.party[1] end,
   isStarterPikachu = function(_, mon) return mon.species == "PIKACHU" end,
   modifyHappiness = function(save, _, mon)
