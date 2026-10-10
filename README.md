@@ -2,7 +2,7 @@
 
 A Pokémon Yellow mod for G1R Deluxe / Gen1Recomp. Yellow's original partner Pikachu will grow from ordinary Pikachu strength at level 5 to Raichu-level potential at level 30, without evolving.
 
-**Status: experimental / not in-game tested.** The separate species, Oak's Lab starter gift replacement, level-dependent stat calculation, and Yellow follower bridge are now coded. Gameplay behavior, saves, PC storage and evolution refusal still require verification before a stable release.
+**Status: experimental, extensively gameplay-tested through level 100 on v0.1.3.** Starter acquisition, level-dependent stats, following and interactions, Pokédex #025 ownership, Oak's Parcel, and PC deposit/save/restart/withdraw were tested by a player. v0.1.4 changes follower integration and bridge guards and therefore requires fresh in-game regression testing. Other-mod compatibility and hot disabling/re-enabling without restarting remain unverified.
 
 ## Design
 
@@ -22,17 +22,19 @@ A Pokémon Yellow mod for G1R Deluxe / Gen1Recomp. Yellow's original partner Pik
 | 25 | 55 | 83 | 50 | 98 | 82 |
 | 30 | 60 | 90 | 55 | 100 | 90 |
 
-## Architecture and next integration steps
+## Implementation and compatibility
 
-The new species must be registered before Yellow's starter gift is created. However, the current upstream `src/world/PikachuFollower.lua` checks for the literal species ID `PIKACHU` in following, happiness, and identity handling. The experimental `engine_bridge.lua` now extends the stat calculator and several follower methods to recognize our separate species. The bridge requires `engine_internals` permission and is not yet proven across all game interactions.
+Oak's Yellow starter is replaced through the `pokemon.before_give` event. The internal species `TRUE_POTENTIAL_PIKACHU` is distinct from ordinary `PIKACHU`, but its display name and Pokédex identity remain Pikachu #025. The standard starter confirmation is **not** a choice between the variants: install/enable the mod to receive True Potential Pikachu; leave it disabled for the vanilla starter. The normal nickname prompt remains available.
 
-Similarly, the Gen 1 `src/pokemon/Stats.lua` stat calculator reads static species base stats. Replacing a species's baseStats at runtime would affect unrelated instances and may produce inconsistent stats. The mod now intercepts `Stats.calc` only for the distinct partner species. All stat recalculation and leveling paths still need integration tests. The independent `growth.lua` module is the single source of truth for the proposed effective base stats.
+`growth.lua` calculates the effective base stats used by the Gen 1 stat formula. `engine_bridge.lua` still requires `engine_internals` for `Stats.calc`, Pokédex normalization around gift/owned-count operations, and selected Yellow follower/happiness compatibility functions. It now uses the public `world.follower.spawn` hook rather than overriding the engine's private spawn predicate; ordinary Pikachu cannot substitute for the custom partner. The redundant `onMoveLearned` override has been removed. A process-local guard prevents duplicate installation of the engine bridge, but is **not** an unload/reload cleanup system; restarting G1R Deluxe is recommended after enabling or disabling the mod.
+
+Pokédex migration normalizes the custom species key to ordinary Pikachu #025 while the partner is in the party. This preserves Oak's Parcel progression and repairs known older save cases; boxed-only historical data and interactions with other mods remain edge cases.
 
 Upstream: https://github.com/bryanthaboi/gen1recomp (branch `dev`). No ROM data or extracted assets are included.
 
 ## Testing (development)
 
-Run `lua tests/growth_test.lua` (or `luajit tests/growth_test.lua`) from the repository root.
+Run `lua tests/growth_test.lua` and `lua tests/bridge_test.lua` from the repository root. The bridge suite uses mock engine modules to check follower selection, Pokédex migration, happiness, move-learning compatibility, stat isolation and duplicate installation. These tests are not a substitute for gameplay tests.
 
 After integration into a Gen1Recomp source checkout, copy the mod folder into `mods/pikachu_true_potential` and run:
 
@@ -50,10 +52,10 @@ These modkit checks have **not** been run yet.
 1. Update `manifest.json`'s `version` (for example, `0.2.0`).
 2. Add a new **topmost** `## [0.2.0] - YYYY-MM-DD` section in `CHANGELOG.md` with actual changes. Keep older entries.
 3. Merge those changes into `main`; run the validation workflow.
-4. Trigger **Release Pikachu True Potential** with the exact same version.
+4. The release workflow automatically runs when `manifest.json` changes on `main`; it can also be triggered manually with the same version.
 
 The workflow refuses to release if the requested version, manifest, or newest changelog section differ. It derives the GitHub tag (`v0.2.0`) and ZIP filename (`pikachu_true_potential-0.2.0.zip`) directly from the manifest version, includes the changelog in the ZIP, and uses that version's changelog section as GitHub Release notes. Existing tags/releases are never overwritten.
 
 Check locally using `python3 tools/release_metadata.py`. For example, `python3 tools/release_metadata.py --version 0.2.0` validates an intended release. A workflow-only change does not itself require a version bump; bump the version and changelog when publishing a new release.
 
-**Note:** The mod is currently unfinished. A successful release packaging job does not imply that starter substitution, follower compatibility, or in-game stat growth have been implemented.
+**Note:** A successful packaging job does not prove that new engine compatibility changes work in-game. Keep the mod experimental until the v0.1.4 follower and save regressions are retested.
