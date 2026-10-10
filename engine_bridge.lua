@@ -3,10 +3,6 @@
 local Bridge = {}
 local ID = "TRUE_POTENTIAL_PIKACHU"
 
--- Hook buses can be recreated during mod reloads even while engine modules
--- persist. Track registration per bus, separately from global wrappers.
-local hookedBuses = setmetatable({}, { __mode = "k" })
-
 function Bridge.install(mod, Growth)
   local Stats = require("src.pokemon.Stats")
   local Follower = require("src.world.PikachuFollower")
@@ -18,6 +14,13 @@ function Bridge.install(mod, Growth)
     Stats.__pikachuTruePotentialBridgeInstalled = true
   end
 
+  -- The bridge file is loaded as a fresh chunk each time. Store the weak
+  -- per-bus registry on the persistent Stats module, not in this chunk.
+  local hookedBuses = Stats.__pikachuTruePotentialHookedBuses
+  if not hookedBuses then
+    hookedBuses = setmetatable({}, { __mode = "k" })
+    Stats.__pikachuTruePotentialHookedBuses = hookedBuses
+  end
   if hookedBuses[mod.hooks] then
     mod.log:info("True Potential: follower spawn hook already registered")
     return
