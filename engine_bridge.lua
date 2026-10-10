@@ -3,17 +3,74 @@
 local Bridge = {}
 local ID = "TRUE_POTENTIAL_PIKACHU"
 
+-- Hook buses can be recreated during mod reloads even while engine modules
+-- persist. Track registration per bus, separately from global wrappers.
+local hookedBuses = setmetatable({}, { __mode = "k" })
+
 function Bridge.install(mod, Growth)
   local Stats = require("src.pokemon.Stats")
   local Follower = require("src.world.PikachuFollower")
   local Commands = require("src.script.Commands")
 
   -- Avoid stacking global engine wrappers when the bridge is loaded twice.
-  if Stats.__pikachuTruePotentialBridgeInstalled then
-    mod.log:info("True Potential: engine bridge already installed")
-    return
+  if not Stats.__pikachuTruePotentialBridgeInstalled then
+    Bridge.installEngineWrappers(Stats, Follower, Commands, Growth)
+    Stats.__pikachuTruePotentialBridgeInstalled = true
   end
 
+  if hookedBuses[mod.hooks] then
+    mod.log:info("True Potential: follower spawn hook already registered")
+    return
+  end
+  hookedBuses[mod.hooks] = true
+
+  -- The engine already exposes this follower hook. Prefer it over
+  -- replacing the engine's private shouldSpawn predicate.
+  mod.hooks:wrap("world.follower.spawn", function(next, game, ow)
+    local save = game and game.save
+    if not (save and save.party) then return false end
+    local hasPartner = false
+    for _, mon in ipairs(save.party) do
+      if mon.species == ID and (mon.hp or 0) > 0 then
+        hasPartner = true
+        break
+      end
+    end
+    if not hasPartner then return false end
+
+    -- The vanilla predicate contains the authoritative Yellow gates
+    -- (starter event, rival battle, ball state, bike, surf and sprite).
+    -- It checks ordinary PIKACHU, so provide a temporary *party view*
+    -- solely for the predicate. Never mutate the saved party.
+    local view = {}
+    for key, value in pairs(save) do view[key] = value end
+    view.party = {}
+    for i, mon in ipairs(save.party) do
+      if mon.species == ID then
+        local surrogate = {}
+        for key, value in pairs(mon) do surrogate[key] = value end
+        surrogate.species = "PIKACHU"
+        view.party[i] = surrogate
+      else
+        -- Hide ordinary Pikachu from the vanilla follower predicate.
+        local surrogate = {}
+        for key, value in pairs(mon) do surrogate[key] = value end
+        if surrogate.species == "PIKACHU" then surrogate.species = "__NOT_PARTNER__" end
+        view.party[i] = surrogate
+      end
+    end
+    local gameView = {}
+    for key, value in pairs(game) do gameView[key] = value end
+    gameView.save = view
+    return next(gameView, ow)
+  end)
+
+  mod.log:info("True Potential: follower spawn hook registered")
+end
+
+-- These six internal wrappers are installed only once per Lua process.
+-- See docs/ENGINE_OVERRIDES.md for the rationale and upstream API gaps.
+function Bridge.installEngineWrappers(Stats, Follower, Commands, Growth)
   -- The species definition stays immutable. Only calculations for the
   -- internal partner species receive a level-specific copy.
   local originalCalc = Stats.calc
@@ -96,49 +153,6 @@ function Bridge.install(mod, Growth)
     return originalHappiness(save, reason, mon)
   end
 
-  -- The engine already exposes this follower hook. Prefer it over
-  -- replacing the engine's private shouldSpawn predicate.
-  mod.hooks:wrap("world.follower.spawn", function(next, game, ow)
-    local save = game and game.save
-    if not (save and save.party) then return false end
-    local hasPartner = false
-    for _, mon in ipairs(save.party) do
-      if mon.species == ID and (mon.hp or 0) > 0 then
-        hasPartner = true
-        break
-      end
-    end
-    if not hasPartner then return false end
-
-    -- The vanilla predicate contains the authoritative Yellow gates
-    -- (starter event, rival battle, ball state, bike, surf and sprite).
-    -- It checks ordinary PIKACHU, so provide a temporary *party view*
-    -- solely for the predicate. Never mutate the saved party.
-    local view = {}
-    for key, value in pairs(save) do view[key] = value end
-    view.party = {}
-    for i, mon in ipairs(save.party) do
-      if mon.species == ID then
-        local surrogate = {}
-        for key, value in pairs(mon) do surrogate[key] = value end
-        surrogate.species = "PIKACHU"
-        view.party[i] = surrogate
-      else
-        -- Hide ordinary Pikachu from the vanilla follower predicate.
-        local surrogate = {}
-        for key, value in pairs(mon) do surrogate[key] = value end
-        if surrogate.species == "PIKACHU" then surrogate.species = "__NOT_PARTNER__" end
-        view.party[i] = surrogate
-      end
-    end
-    local gameView = {}
-    for key, value in pairs(game) do gameView[key] = value end
-    gameView.save = view
-    return next(gameView, ow)
-  end)
-
-  Stats.__pikachuTruePotentialBridgeInstalled = true
-  mod.log:info("True Potential: installed stat and Yellow follower bridges")
 end
 
 return Bridge
