@@ -10,7 +10,8 @@ A Pokémon Yellow mod for G1R Deluxe / Gen1Recomp. Yellow's original partner Pik
 - Independent internal species ID: `TRUE_POTENTIAL_PIKACHU`; displayed name remains PIKACHU.
 - Level 5 starts at Pikachu's Gen 1 base stats; level 30 reaches Raichu's Gen 1 base stats.
 - Linear stat interpolation, clamped at levels 5 and 30, rounded to the nearest integer.
-- Preserve Pikachu moves, appearance, friendship and no-evolution rule.
+- Preserve Pikachu level-up moves, appearance, friendship and no-evolution rule.
+- Partner-only machine additions: HM03 Surf, HM04 Strength, TM26 Earthquake and TM28 Dig. Ordinary Pikachu retains its original compatibility; existing learned moves are not modified.
 - Keep original DVs and stat experience. Friendship never affects stats.
 
 | Level | HP | Attack | Defense | Speed | Special |
