@@ -50,6 +50,22 @@ return function(mod)
     end
     partner.learnset[i] = copy
   end
+  -- Add Double Kick at level 9 without replacing Quick Attack.
+  -- Keep entries sorted for level-up and Day Care move learning.
+  local hasDoubleKick = false
+  for _, entry in ipairs(partner.learnset) do
+    if entry.level == 9 and entry.move == "DOUBLE_KICK" then
+      hasDoubleKick = true
+      break
+    end
+  end
+  if not hasDoubleKick then
+    local position = #partner.learnset + 1
+    for i, entry in ipairs(partner.learnset) do
+      if entry.level > 9 then position = i; break end
+    end
+    table.insert(partner.learnset, position, { level = 9, move = "DOUBLE_KICK" })
+  end
   -- A separate species retains Pikachu's vanilla visuals.
   -- Never evolve our internal partner entry.
   partner.evolutions = {}
