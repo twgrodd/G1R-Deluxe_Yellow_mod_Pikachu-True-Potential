@@ -32,8 +32,8 @@ return function(mod)
     partner.tmhm[#partner.tmhm + 1] = move
     compatible[move] = true
   end
-  -- HM03 Surf, HM04 Strength, TM26 Earthquake and TM28 Dig.
-  for _, move in ipairs({ "SURF", "STRENGTH", "EARTHQUAKE", "DIG" }) do
+  -- HM02 Fly, HM03 Surf, HM04 Strength, TM26 Earthquake and TM28 Dig.
+  for _, move in ipairs({ "FLY", "SURF", "STRENGTH", "EARTHQUAKE", "DIG" }) do
     if not compatible[move] then
       partner.tmhm[#partner.tmhm + 1] = move
       compatible[move] = true
