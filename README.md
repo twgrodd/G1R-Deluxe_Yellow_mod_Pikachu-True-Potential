@@ -61,4 +61,4 @@ Check locally using `python3 tools/release_metadata.py`. For example, `python3 t
 
 **Note:** A successful packaging job does not prove that new engine compatibility changes work in-game. Keep the mod experimental until the v0.1.5 follower and save regressions are retested.
 
-Partner-specific level-up adjustment: at level 33, **Amnesia** replaces **Agility**. Other level-up moves are unchanged; wild and traded Pikachu still learn Agility. Existing learned moves are not rewritten.
+Partner-specific level-up adjustments: **Double Kick** is added at level 9 (alongside the existing move), and at level 33, **Amnesia** replaces **Agility**. Other level-up moves are unchanged; wild and traded Pikachu still learn Agility. Existing learned moves are not rewritten.
