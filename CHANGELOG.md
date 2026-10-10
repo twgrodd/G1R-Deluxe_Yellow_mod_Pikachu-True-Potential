@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.7] - 2026-10-10
+
+### Fixes
+- Integrate with Crystal Animated Sprites with Shiny Visuals v2.0.3: map True Potential Pikachu to regular Pikachu's visual Pokédex key (#025) for battle art, animations and shiny visuals, while retaining the distinct gameplay species ID.
+- Shorten Oak's starter nickname prompt to a readable two-line question instead of printing the internal species identifier; preserve other gift prompts.
+- Add mock regression checks for the optional sprite alias and nickname dialog.
+
+### Testing
+- Experimental: verify animated front/back sprites, shiny-compatible DVs, nickname dialog and mod load order in game. No new engine function replacements.
+
 ## [0.1.6] - 2026-10-10
 
 ### New partner-only moves
