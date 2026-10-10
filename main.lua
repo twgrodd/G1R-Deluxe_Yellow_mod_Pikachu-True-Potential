@@ -70,6 +70,18 @@ return function(mod)
   -- Never evolve our internal partner entry.
   partner.evolutions = {}
 
+  -- Crystal Animated Sprites with Shiny Visuals v2.0.3 looks up art,
+  -- animation frames, and shiny variants via its species_map table,
+  -- not the Pokemon definition's dex number. Give our distinct partner
+  -- species the same visual dex key as regular Pikachu (#025).
+  -- This is an optional integration: no dependency or engine override.
+  local ok, crystalMap = pcall(require,
+    "mods.crystal_animated_sprites_with_shiny_visuals.species_map")
+  if ok and type(crystalMap) == "table" then
+    crystalMap[PARTNER_ID] = crystalMap.PIKACHU or 25
+    mod.log:info("Crystal animated sprite alias enabled for partner Pikachu")
+  end
+
   mod.content.pokemon:register(PARTNER_ID, partner)
   local bridgeSource = mod:read("engine_bridge.lua")
   if not bridgeSource then
