@@ -50,7 +50,7 @@ If you enable or disable the mod, **restart G1R Deluxe** before playing. Already
 
 ## Current status and testing
 
-**Experimental — latest published baseline: v0.1.5.** The Double Kick, Amnesia, Fly, Surf, Strength, Earthquake, and Dig additions described above are **on the open development PR #8 and are not yet part of the published release**: [see upcoming changes](https://github.com/twgrodd/G1R-Deluxe_Yellow_mod_Pikachu-True-Potential/pull/8).
+**Experimental — v0.1.6 testing release.** This version includes Double Kick, Amnesia, Fly, Surf, Strength, Earthquake, and Dig for True Potential Pikachu. These new move changes have mock regression coverage but still need in-game verification.
 
 Earlier v0.1.3 gameplay testing covered levels 5–100, partner following/interactions, Pokédex #025, Oak's Parcel, and PC/save/restart behavior. Later follower changes and the new move additions still need fresh in-game testing. Compatibility with other mods and hot disabling/re-enabling have not been verified.
 
