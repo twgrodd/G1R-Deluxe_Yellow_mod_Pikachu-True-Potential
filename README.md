@@ -44,7 +44,7 @@ These are **base stats**, not the numbers shown on Pikachu's summary screen. Act
 
 ## Visual mod compatibility
 
-With **Crystal Animated Sprites with Shiny Visuals** (tested against its v2.0.3 source), True Potential Pikachu shares regular Pikachu's visual Pokédex key (#025) for animated battle art and shiny-variant selection. The special partner keeps its own stats, moves and identity. Restart the game after changing mods; combined in-game behavior still needs testing.
+With **Crystal Animated Sprites with Shiny Visuals** (tested against its v2.0.3 source), True Potential Pikachu shares regular Pikachu's visual Pokédex key (#025) for animated battle art and shiny-variant selection. The special partner keeps its own stats, moves and identity. Restart the game after changing mods; the user has reported successful combined gameplay testing.
 
 ## Getting started
 
@@ -54,9 +54,9 @@ If you enable or disable the mod, **restart G1R Deluxe** before playing. Already
 
 ## Current status and testing
 
-**Experimental — v0.1.7 testing release.** This version includes Double Kick, Amnesia, Fly, Surf, Strength, Earthquake, and Dig for True Potential Pikachu. These new move changes have mock regression coverage but still need in-game verification.
+**Official public release — v1.0.0.** Includes Double Kick, Amnesia, Fly, Surf, Strength, Earthquake, and Dig for True Potential Pikachu, plus the Crystal animated sprite compatibility and nickname prompt fixes. Player testing has reported that the updated setup works well.
 
-Earlier v0.1.3 gameplay testing covered levels 5–100, partner following/interactions, Pokédex #025, Oak's Parcel, and PC/save/restart behavior. Later follower changes and the new move additions still need fresh in-game testing. Compatibility with other mods and hot disabling/re-enabling have not been verified.
+Earlier gameplay testing covered levels 5–100, partner following/interactions, Pokédex #025, Oak's Parcel, and PC/save/restart behavior. The v0.1.7 combination with Crystal Animated Sprites has also been reported working in gameplay. Not every mod combination has been tested, and hot disabling/re-enabling remains unsupported; restart after changing enabled mods.
 
 ---
 
@@ -98,4 +98,4 @@ The workflow refuses to release if the requested version, manifest, or newest ch
 
 Check locally using `python3 tools/release_metadata.py`. For example, `python3 tools/release_metadata.py --version 0.2.0` validates an intended release. A workflow-only change does not itself require a version bump; bump the version and changelog when publishing a new release.
 
-**Note:** A successful packaging job does not prove that new engine compatibility changes work in-game. Keep the mod experimental until the v0.1.5 follower and save regressions are retested.
+**Note:** A successful packaging job is not a substitute for in-game testing. Report compatibility issues with reproduction steps and enabled mod versions.
