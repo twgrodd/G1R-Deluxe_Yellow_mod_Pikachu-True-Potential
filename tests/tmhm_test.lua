@@ -26,7 +26,20 @@ local mod = {
   events = { on = function(_, name, fn) events[name] = fn end },
   log = { warn = function() error("unexpected warning") end, info = function() end },
 }
+-- Simulate the optional Crystal mod's shared species-to-dex map.
+local crystalSpeciesMap = { PIKACHU = 25 }
+local originalRequire = require
+require = function(name)
+  if name == "mods.crystal_animated_sprites_with_shiny_visuals.species_map" then
+    return crystalSpeciesMap
+  end
+  return originalRequire(name)
+end
 dofile("main.lua")(mod)
+require = originalRequire
+assert(crystalSpeciesMap.TRUE_POTENTIAL_PIKACHU == 25,
+  "partner must use Pikachu's Crystal art/animation/shiny dex key")
+assert(crystalSpeciesMap.PIKACHU == 25, "ordinary Pikachu map unchanged")
 assert(registered and registered.tmhm ~= normal.tmhm)
 assert(registered.learnset ~= normal.learnset, "partner learnset must be independent")
 assert(normal.learnset[2].move == "AGILITY", "vanilla Pikachu must retain Agility")
