@@ -20,11 +20,13 @@ jobs:
           sudo apt-get install -y lua5.4
       - name: Check Lua syntax
         run: |
-          luac5.4 -p main.lua growth.lua engine_bridge.lua tests/growth_test.lua tests/bridge_test.lua
+          luac5.4 -p main.lua growth.lua engine_bridge.lua tests/growth_test.lua tests/bridge_test.lua tests/tmhm_test.lua
       - name: Run growth table tests
         run: lua5.4 tests/growth_test.lua
       - name: Run engine bridge regression tests
         run: lua5.4 tests/bridge_test.lua
+      - name: Test partner TM/HM compatibility
+          run: lua5.4 tests/tmhm_test.lua
       - name: Validate manifest metadata
         run: |
           python3 - <<'PY'
