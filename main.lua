@@ -39,7 +39,18 @@ return function(mod)
       compatible[move] = true
     end
   end
-  -- A separate species retains Pikachu's vanilla moves and visuals.
+  -- Replace only partner level-33 Agility with Amnesia.
+  -- Clone learnset entries so vanilla Pikachu stays unchanged.
+  partner.learnset = {}
+  for i, entry in ipairs(normal.learnset or {}) do
+    local copy = {}
+    for key, value in pairs(entry) do copy[key] = value end
+    if copy.level == 33 and copy.move == "AGILITY" then
+      copy.move = "AMNESIA"
+    end
+    partner.learnset[i] = copy
+  end
+  -- A separate species retains Pikachu's vanilla visuals.
   -- Never evolve our internal partner entry.
   partner.evolutions = {}
 
