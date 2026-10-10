@@ -1,7 +1,7 @@
 {
   "id": "pikachu_true_potential",
   "name": "Pikachu True Potential",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",

@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.1.6] - 2026-10-10
+
+### New partner-only moves
+- Learn Double Kick at level 9 in addition to Pikachu's existing level-up move.
+- Learn Amnesia instead of Agility at level 33.
+- Gain compatibility with HM02 Fly, HM03 Surf, HM04 Strength, TM26 Earthquake, and TM28 Dig.
+- Keep ordinary wild/traded Pikachu's learnset and machine compatibility unchanged.
+
+### Documentation and testing
+- Reorganize README with player-facing features, stat table, and instructions first, and implementation details below.
+- Add mock regression tests for machine compatibility and partner-only learnset changes.
+
+### Experimental testing
+- Intended for player testing of the new moves and combinations with other mods.
+- In-game move learning, follower behavior after earlier changes, and cross-mod compatibility are not yet verified.
+- Existing learned moves are not retroactively replaced; restart after changing enabled mods.
+
 ## [0.1.5] - 2026-10-10
 
 ### Improved

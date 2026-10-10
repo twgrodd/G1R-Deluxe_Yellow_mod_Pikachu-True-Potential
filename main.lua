@@ -25,7 +25,48 @@ return function(mod)
   partner.id = PARTNER_ID
   partner.name = "PIKACHU"
   partner.baseStats = Growth.baseStats(Growth.startLevel)
-  -- A separate species retains Pikachu's vanilla moves and visuals.
+  -- Copy machine compatibility: ordinary Pikachu must remain unchanged.
+  partner.tmhm = {}
+  local compatible = {}
+  for _, move in ipairs(normal.tmhm or {}) do
+    partner.tmhm[#partner.tmhm + 1] = move
+    compatible[move] = true
+  end
+  -- HM02 Fly, HM03 Surf, HM04 Strength, TM26 Earthquake and TM28 Dig.
+  for _, move in ipairs({ "FLY", "SURF", "STRENGTH", "EARTHQUAKE", "DIG" }) do
+    if not compatible[move] then
+      partner.tmhm[#partner.tmhm + 1] = move
+      compatible[move] = true
+    end
+  end
+  -- Replace only partner level-33 Agility with Amnesia.
+  -- Clone learnset entries so vanilla Pikachu stays unchanged.
+  partner.learnset = {}
+  for i, entry in ipairs(normal.learnset or {}) do
+    local copy = {}
+    for key, value in pairs(entry) do copy[key] = value end
+    if copy.level == 33 and copy.move == "AGILITY" then
+      copy.move = "AMNESIA"
+    end
+    partner.learnset[i] = copy
+  end
+  -- Add Double Kick at level 9 without replacing Quick Attack.
+  -- Keep entries sorted for level-up and Day Care move learning.
+  local hasDoubleKick = false
+  for _, entry in ipairs(partner.learnset) do
+    if entry.level == 9 and entry.move == "DOUBLE_KICK" then
+      hasDoubleKick = true
+      break
+    end
+  end
+  if not hasDoubleKick then
+    local position = #partner.learnset + 1
+    for i, entry in ipairs(partner.learnset) do
+      if entry.level > 9 then position = i; break end
+    end
+    table.insert(partner.learnset, position, { level = 9, move = "DOUBLE_KICK" })
+  end
+  -- A separate species retains Pikachu's vanilla visuals.
   -- Never evolve our internal partner entry.
   partner.evolutions = {}
 
