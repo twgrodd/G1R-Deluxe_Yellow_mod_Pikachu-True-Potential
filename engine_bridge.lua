@@ -117,8 +117,29 @@ function Bridge.installEngineWrappers(Stats, Follower, Commands, Growth)
   -- The engine adds the custom species key after pokemon.before_give.
   -- Normalize once the gift and optional nickname prompt are finished.
   local originalGive = Commands.give_pokemon
-  Commands.give_pokemon = function(ctx, ...)
-    local result = originalGive(ctx, ...)
+  Commands.give_pokemon = function(ctx, species, ...)
+    -- The upstream gift command sets pendingPokemonName to the INTERNAL
+    -- species key. Its generic nickname text substitutes that key for
+    -- {RAM}, which overflows the two-line Yellow dialog for our partner.
+    -- Scope a short, literal question to Oak's starter gift only. Reuse
+    -- this existing give_pokemon wrapper; do not replace the text engine.
+    local save = ctx and ctx.save
+    local map = ctx and ctx.overworld and ctx.overworld.map
+    local starterGift = species == "PIKACHU" and map and map.id == "OAKS_LAB"
+      and save and save.flags and not save.flags.EVENT_GOT_STARTER
+      and #(save.party or {}) == 0
+    local texts = ctx and ctx.game and ctx.game.data and ctx.game.data.text
+    local originalPrompt
+    if starterGift and texts then
+      originalPrompt = texts._DoYouWantToNicknameText
+      texts._DoYouWantToNicknameText = "Give a nickname\\nto PIKACHU?"
+    end
+    local result = originalGive(ctx, species, ...)
+    if starterGift and texts then
+      texts._DoYouWantToNicknameText = originalPrompt
+      -- The literal prompt did not consume the upstream RAM token.
+      if ctx.pendingPokemonName == ID then ctx.pendingPokemonName = nil end
+    end
     syncPartnerDex(ctx and ctx.save)
     return result
   end
