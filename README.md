@@ -42,6 +42,10 @@ These are **base stats**, not the numbers shown on Pikachu's summary screen. Act
 | 25 | 55 | 83 | 50 | 98 | 82 |
 | **30+** | **60** | **90** | **55** | **100** | **90** |
 
+## Visual mod compatibility
+
+With **Crystal Animated Sprites with Shiny Visuals** (tested against its v2.0.3 source), True Potential Pikachu shares regular Pikachu's visual Pokédex key (#025) for animated battle art and shiny-variant selection. The special partner keeps its own stats, moves and identity. Restart the game after changing mods; combined in-game behavior still needs testing.
+
 ## Getting started
 
 Install and enable the mod in **G1R Deluxe / Gen1Recomp with Pokémon Yellow imported**, then begin a Yellow game and receive Pikachu from Professor Oak as usual. The usual nickname prompt remains available. This mod does **not** include Pokémon Yellow ROM data or extracted assets.
@@ -50,7 +54,7 @@ If you enable or disable the mod, **restart G1R Deluxe** before playing. Already
 
 ## Current status and testing
 
-**Experimental — v0.1.6 testing release.** This version includes Double Kick, Amnesia, Fly, Surf, Strength, Earthquake, and Dig for True Potential Pikachu. These new move changes have mock regression coverage but still need in-game verification.
+**Experimental — v0.1.7 testing release.** This version includes Double Kick, Amnesia, Fly, Surf, Strength, Earthquake, and Dig for True Potential Pikachu. These new move changes have mock regression coverage but still need in-game verification.
 
 Earlier v0.1.3 gameplay testing covered levels 5–100, partner following/interactions, Pokédex #025, Oak's Parcel, and PC/save/restart behavior. Later follower changes and the new move additions still need fresh in-game testing. Compatibility with other mods and hot disabling/re-enabling have not been verified.
 
