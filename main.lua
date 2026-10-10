@@ -25,6 +25,20 @@ return function(mod)
   partner.id = PARTNER_ID
   partner.name = "PIKACHU"
   partner.baseStats = Growth.baseStats(Growth.startLevel)
+  -- Copy machine compatibility: ordinary Pikachu must remain unchanged.
+  partner.tmhm = {}
+  local compatible = {}
+  for _, move in ipairs(normal.tmhm or {}) do
+    partner.tmhm[#partner.tmhm + 1] = move
+    compatible[move] = true
+  end
+  -- HM03 Surf, HM04 Strength, TM26 Earthquake and TM28 Dig.
+  for _, move in ipairs({ "SURF", "STRENGTH", "EARTHQUAKE", "DIG" }) do
+    if not compatible[move] then
+      partner.tmhm[#partner.tmhm + 1] = move
+      compatible[move] = true
+    end
+  end
   -- A separate species retains Pikachu's vanilla moves and visuals.
   -- Never evolve our internal partner entry.
   partner.evolutions = {}
