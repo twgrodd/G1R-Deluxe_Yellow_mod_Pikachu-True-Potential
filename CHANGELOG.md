@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.1.4] - 2026-10-10
+
+### Changed
+- Use the public `world.follower.spawn` hook instead of replacing the private follower spawn predicate.
+- Require the actual True Potential starter for follower eligibility; ordinary Pikachu cannot stand in.
+- Remove the redundant `PikachuFollower.onMoveLearned` override and retain the vanilla handler.
+- Add a process-local duplicate-install guard for the engine bridge.
+
+### Testing and documentation
+- Add mock-engine regression tests for follower eligibility, happiness, move-learning, stat isolation, Pokédex migration, and duplicate installation; run them in CI and release builds.
+- Update documentation with observed level 5–100 gameplay testing, PC persistence, and known compatibility limitations.
+- Preserve the v0.1.3 Pokédex and Oak’s Parcel fixes; no new starter selection menu.
+
+### Known limitations
+- Requires in-game regression testing after changing the follower hook.
+- Engine wrapper cleanup on hot disable/re-enable and cross-mod compatibility remain unverified.
+
+
 ## [0.1.3] - 2026-10-08
 
 ### Fixed
