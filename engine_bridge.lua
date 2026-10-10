@@ -21,14 +21,15 @@ function Bridge.install(mod, Growth)
     return originalCalc(speciesDef, level, dvs, statExp)
   end
 
-  local originalStarter = Follower.starterInParty
+  -- Only the distinct partner species qualifies as Yellow's starter.
+  -- An ordinary wild/traded Pikachu must never substitute for it.
   Follower.starterInParty = function(save, healthy)
     for _, mon in ipairs(save.party or {}) do
       if mon.species == ID and (not healthy or (mon.hp or 0) > 0) then
         return mon
       end
     end
-    return originalStarter(save, healthy)
+    return nil
   end
 
   local originalIdentity = Follower.isStarterPikachu
@@ -65,10 +66,9 @@ function Bridge.install(mod, Growth)
     return originalLearned(save, mon, moveId)
   end
 
-  -- Preserve the original follower logic, extending it for our new species.
-  local previousSpawn
-  previousSpawn = Follower.setShouldSpawn(function(game, ow)
-    if previousSpawn and previousSpawn(game, ow) then return true end
+  -- Replace the permissive vanilla spawn predicate: ordinary Pikachu
+  -- must not activate the follower when the partner is absent.
+  Follower.setShouldSpawn(function(game, ow)
     local save = game.save
     if not (save and save.party) then return false end
     -- Only the true partner can activate this alternate path.
