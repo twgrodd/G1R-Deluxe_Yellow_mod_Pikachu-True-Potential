@@ -26,7 +26,7 @@ jobs:
       - name: Run engine bridge regression tests
         run: lua5.4 tests/bridge_test.lua
       - name: Test partner TM/HM compatibility
-          run: lua5.4 tests/tmhm_test.lua
+        run: lua5.4 tests/tmhm_test.lua
       - name: Validate manifest metadata
         run: |
           python3 - <<'PY'
