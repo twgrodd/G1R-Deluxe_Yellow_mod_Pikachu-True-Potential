@@ -33,7 +33,7 @@ assert(registered.level1Moves == normal.level1Moves, "starting moves must be unc
 assert(#normal.tmhm == 2 and normal.tmhm[1] == "THUNDERBOLT")
 local count = {}
 for _, move in ipairs(registered.tmhm) do count[move] = (count[move] or 0) + 1 end
-for _, move in ipairs({ "SURF", "STRENGTH", "EARTHQUAKE", "DIG", "THUNDERBOLT" }) do
+for _, move in ipairs({ "FLY", "SURF", "STRENGTH", "EARTHQUAKE", "DIG", "THUNDERBOLT" }) do
   assert(count[move] == 1, "missing or duplicate machine move: " .. move)
 end
 assert(registered.evolutions ~= normal.evolutions)
