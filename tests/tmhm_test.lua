@@ -1,4 +1,4 @@
--- Verify partner-only TM/HM compatibility without modifying level-up moves.
+-- Verify partner-only TM/HM compatibility and targeted learnset changes.
 local normal = {
   id = "PIKACHU", name = "PIKACHU",
   baseStats = { hp = 35 },
@@ -30,7 +30,9 @@ dofile("main.lua")(mod)
 assert(registered and registered.tmhm ~= normal.tmhm)
 assert(registered.learnset ~= normal.learnset, "partner learnset must be independent")
 assert(normal.learnset[2].move == "AGILITY", "vanilla Pikachu must retain Agility")
-assert(registered.learnset[2].level == 33 and registered.learnset[2].move == "AMNESIA", "partner must learn Amnesia at 33")
+assert(registered.learnset[2].level == 9 and registered.learnset[2].move == "DOUBLE_KICK", "partner must learn Double Kick at 9")
+assert(registered.learnset[3].level == 33 and registered.learnset[3].move == "AMNESIA", "partner must learn Amnesia at 33")
+assert(#registered.learnset == #normal.learnset + 1, "exactly one new learnset entry expected")
 assert(registered.learnset[1].move == normal.learnset[1].move, "other level-up moves must be preserved")
 assert(registered.level1Moves == normal.level1Moves, "starting moves must be unchanged")
 assert(#normal.tmhm == 2 and normal.tmhm[1] == "THUNDERBOLT")
