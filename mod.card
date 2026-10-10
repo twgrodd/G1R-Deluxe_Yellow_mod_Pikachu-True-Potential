@@ -1,18 +1,24 @@
 return {
-  summary = "Yellow partner Pikachu grows toward Raichu's strength (in development).",
+  summary = "Pokémon Yellow's partner Pikachu grows to Raichu-level base stats without evolving.",
   author = "twgrodd",
   tags = { "balance", "pokemon-yellow", "starter" },
   differences = {
-    changed = {},
-    added = { "TRUE_POTENTIAL_PIKACHU species registration", "Growth curve module" },
+    changed = {
+      "Oak's Yellow starter is a unique, non-evolving partner with level 5–30 stat growth",
+      "Partner learns Amnesia instead of Agility at level 33",
+    },
+    added = {
+      "Double Kick at level 9 for the partner",
+      "HM02 Fly, HM03 Surf, HM04 Strength, TM26 Earthquake and TM28 Dig compatibility",
+      "Crystal animated sprite and shiny visual compatibility",
+    },
     known = {
-      "Starter substitution is not implemented.",
-      "Level-based stats are not integrated into the game engine.",
-      "Follower, happiness, and save compatibility need implementation.",
+      "Restart the game after enabling or disabling mods",
+      "Other mods' compatibility may vary; report issues with enabled mod versions",
     },
   },
   credits = {
     { who = "bryanthaboi/gen1recomp", for_ = "G1R Deluxe engine and mod API" },
   },
-  compat = { engine = ">=1.0.0 <2.0.0", modApi = 2 },
+  compat = { engine = ">=0.0.0-0 <2.0.0", modApi = 2 },
 }
