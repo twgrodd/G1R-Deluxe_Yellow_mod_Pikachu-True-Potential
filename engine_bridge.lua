@@ -7,6 +7,13 @@ function Bridge.install(mod, Growth)
   local Stats = require("src.pokemon.Stats")
   local Follower = require("src.world.PikachuFollower")
 
+  -- Engine modules persist across mod reloads. Do not stack wrappers or
+  -- register the same follower hook twice in a single Lua process.
+  if Stats.__pikachuTruePotentialBridgeInstalled then
+    mod.log:info("True Potential: bridge already installed; skipping duplicate")
+    return
+  end
+
   -- The species definition stays immutable. Only calculations for the
   -- internal partner species receive a level-specific copy.
   local originalCalc = Stats.calc
@@ -54,17 +61,6 @@ function Bridge.install(mod, Growth)
     return originalHappiness(save, reason, mon)
   end
 
-  local originalLearned = Follower.onMoveLearned
-  Follower.onMoveLearned = function(save, mon, moveId)
-    if mon and mon.species == ID then
-      local view = {}
-      for key, value in pairs(mon) do view[key] = value end
-      view.species = "PIKACHU"
-      return originalLearned(save, view, moveId)
-    end
-    return originalLearned(save, mon, moveId)
-  end
-
   -- The engine already exposes this follower hook. Prefer it over
   -- replacing the engine's private shouldSpawn predicate.
   mod.hooks:wrap("world.follower.spawn", function(next, game, ow)
@@ -106,6 +102,7 @@ function Bridge.install(mod, Growth)
     return next(gameView, ow)
   end)
 
+  Stats.__pikachuTruePotentialBridgeInstalled = true
   mod.log:info("True Potential: installed stat and Yellow follower bridges")
 end
 
