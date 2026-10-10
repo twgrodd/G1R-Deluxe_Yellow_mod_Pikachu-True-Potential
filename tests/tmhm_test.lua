@@ -3,7 +3,7 @@ local normal = {
   id = "PIKACHU", name = "PIKACHU",
   baseStats = { hp = 35 },
   level1Moves = { "THUNDERSHOCK", "GROWL" },
-  learnset = { { level = 9, move = "QUICK_ATTACK" } },
+  learnset = { { level = 9, move = "QUICK_ATTACK" }, { level = 33, move = "AGILITY" } },
   tmhm = { "THUNDERBOLT", "DIG" },
   evolutions = { { species = "RAICHU" } },
 }
@@ -28,7 +28,10 @@ local mod = {
 }
 dofile("main.lua")(mod)
 assert(registered and registered.tmhm ~= normal.tmhm)
-assert(registered.learnset == normal.learnset, "level-up learnset must be unchanged")
+assert(registered.learnset ~= normal.learnset, "partner learnset must be independent")
+assert(normal.learnset[2].move == "AGILITY", "vanilla Pikachu must retain Agility")
+assert(registered.learnset[2].level == 33 and registered.learnset[2].move == "AMNESIA", "partner must learn Amnesia at 33")
+assert(registered.learnset[1].move == normal.learnset[1].move, "other level-up moves must be preserved")
 assert(registered.level1Moves == normal.level1Moves, "starting moves must be unchanged")
 assert(#normal.tmhm == 2 and normal.tmhm[1] == "THUNDERBOLT")
 local count = {}
