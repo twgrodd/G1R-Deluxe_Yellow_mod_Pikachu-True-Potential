@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1] - 2026-10-14
+
+### Fixes
+- Restore the full True Potential Pikachu name in Oak's starter nickname question.
+- Use a real newline and two rows that fit the Gen 1 dialogue box, preventing the automatic scroll caused by the previous literal backslash-n and oversized text.
+- Keep normal Pokémon gift nickname prompts unchanged.
+
 ## [1.0.0] - 2026-10-10
 
 ### First official public release
