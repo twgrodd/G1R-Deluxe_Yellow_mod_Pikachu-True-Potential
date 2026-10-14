@@ -132,7 +132,7 @@ function Bridge.installEngineWrappers(Stats, Follower, Commands, Growth)
     local originalPrompt
     if starterGift and texts then
       originalPrompt = texts._DoYouWantToNicknameText
-      texts._DoYouWantToNicknameText = "Give a nickname\\nto PIKACHU?"
+      texts._DoYouWantToNicknameText = "Name TRUE\nPOTENTIAL PIKACHU?"
     end
     local result = originalGive(ctx, species, ...)
     if starterGift and texts then

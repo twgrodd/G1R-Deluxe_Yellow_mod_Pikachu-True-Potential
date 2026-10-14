@@ -54,7 +54,7 @@ If you enable or disable the mod, **restart G1R Deluxe** before playing. Already
 
 ## Current status and testing
 
-**Official public release — v1.0.0.** Includes Double Kick, Amnesia, Fly, Surf, Strength, Earthquake, and Dig for True Potential Pikachu, plus the Crystal animated sprite compatibility and nickname prompt fixes. Player testing has reported that the updated setup works well.
+**Official public release — v1.0.1.** Includes Double Kick, Amnesia, Fly, Surf, Strength, Earthquake, and Dig for True Potential Pikachu, plus the Crystal animated sprite compatibility and nickname prompt fixes. Player testing has reported that the updated setup works well.
 
 Earlier gameplay testing covered levels 5–100, partner following/interactions, Pokédex #025, Oak's Parcel, and PC/save/restart behavior. The v0.1.7 combination with Crystal Animated Sprites has also been reported working in gameplay. Not every mod combination has been tested, and hot disabling/re-enabling remains unsupported; restart after changing enabled mods.
 

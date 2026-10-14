@@ -111,7 +111,12 @@ local starterCtx = {
   game = { data = { text = { _DoYouWantToNicknameText = defaultPrompt } } },
 }
 assert(Commands.give_pokemon(starterCtx, "PIKACHU"))
-assert(starterCtx.capturedNicknamePrompt == "Give a nickname\\nto PIKACHU?")
+assert(starterCtx.capturedNicknamePrompt == "Name TRUE\nPOTENTIAL PIKACHU?")
+local first, second = starterCtx.capturedNicknamePrompt:match("^([^\n]+)\n([^\n]+)$")
+assert(first and second and #first <= 18 and #second <= 18,
+  "starter prompt must fit two lines without auto-scrolling")
+assert(not starterCtx.capturedNicknamePrompt:find(string.char(92) .. "n", 1, true),
+  "starter prompt must use a newline character, not literal backslash-n")
 assert(starterCtx.game.data.text._DoYouWantToNicknameText == defaultPrompt)
 assert(starterCtx.pendingPokemonName == nil)
 local otherCtx = {
