@@ -128,17 +128,20 @@ assert(otherCtx.capturedNicknamePrompt == defaultPrompt)
 
 local spawn = wrappers[1]
 local game = { save = save }
-local vanilla = function(viewGame)
-  for _, mon in ipairs(viewGame.save.party) do
-    if mon.species == "PIKACHU" and mon.hp > 0 then return true end
-  end
-  return false
+-- Model the current upstream predicate: it calls the patched
+-- Follower.starterInParty, not a literal PIKACHU species comparison.
+local vanilla = function(actualGame)
+  return Follower.starterInParty(actualGame.save, true) ~= nil
 end
-assert(spawn(vanilla, game, { player = {} }) == true)
+assert(spawn(vanilla, game, { player = {} }) == true,
+  "healthy custom partner must spawn via patched starter recognition")
 assert(save.party[2].species == ID and save.party[1].species == "PIKACHU")
 save.party = { ordinary }
 assert(spawn(vanilla, game, { player = {} }) == false)
 save.party = { partner }
 partner.hp = 0
 assert(spawn(vanilla, game, { player = {} }) == false)
+partner.hp = 20
+assert(spawn(vanilla, game, { player = {} }) == true,
+  "partner must spawn again when healed")
 print("Pikachu True Potential: bridge regression tests passed")
