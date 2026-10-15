@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2] - 2026-10-15
+
+### Fixes
+- Restore True Potential Pikachu's Yellow overworld follower. The spawn hook previously disguised the partner as ordinary Pikachu, but the patched starter-recognition function requires the partner's real internal species ID. Passing the original game state to the vanilla spawn predicate resolves this conflict without another engine override.
+- Preserve all upstream follower spawn gates and ordinary Pikachu isolation.
+- Add regression coverage matching the upstream starter recognition behavior. In-game verification is still required.
+
 ## [1.0.1] - 2026-10-14
 
 ### Fixes
