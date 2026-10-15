@@ -1,6 +1,6 @@
 # Engine function replacement audit
 
-This document describes **every G1R Deluxe engine function replaced by this mod** as of the unreleased bridge lifecycle improvement. These are Lua module-function assignments, not public mod hooks. All six require the manifest's `engine_internals` permission. Source references are to upstream `bryanthaboi/gen1recomp` on `dev`; revisit them when updating engine versions.
+This document describes **every G1R Deluxe engine function replaced by this mod** in the current v1.0.2 code. These are Lua module-function assignments, not public mod hooks. All six require the manifest's `engine_internals` permission. Source references are to upstream `bryanthaboi/gen1recomp` on `dev`; revisit them when updating engine versions.
 
 The mod's independent internal species is `TRUE_POTENTIAL_PIKACHU` (`ID`). It displays as ordinary Pikachu, Pokédex #025. **Ordinary Pikachu must never qualify as the partner.** Engine wrappers are installed once per Lua process; public hooks are registered separately per hook bus.
 
@@ -24,11 +24,11 @@ The mod's independent internal species is `TRUE_POTENTIAL_PIKACHU` (`ID`). It di
 
 ### 3. `src.script.Commands.give_pokemon`
 
-**Why:** Upstream emits `pokemon.before_give` *before* creating the Pokémon, then writes `dex.seen[species]` and `dex.owned[species]` after adding it. Our event changes `species` to `ID`, so a pre-gift correction alone cannot prevent the extra Pokédex key.
+**Why:** Upstream emits `pokemon.before_give` *before* creating the Pokémon, then writes `dex.seen[species]` and `dex.owned[species]` after adding it. Our event changes `species` to `ID`, so a pre-gift correction alone cannot prevent the extra Pokédex key. The upstream nickname question also uses the internal species name, which is too long for the normal Yellow dialogue box.
 
-**How:** Capture the original `give_pokemon`, call it with the original context and varargs, then call `syncPartnerDex(ctx.save)`, and return the original result. All original gift, naming, party/box, and script behavior remains in the original function.
+**How:** Capture the original `give_pokemon`. Only for Oak's initial Pikachu gift in `OAKS_LAB` (no starter flag and an empty party), temporarily replace `ctx.game.data.text._DoYouWantToNicknameText` with the two-line `Name TRUE\nPOTENTIAL PIKACHU?` prompt. Call the original command with the original context, species and varargs. Restore the original prompt afterward and clear the unused `pendingPokemonName` token if it still contains `ID`. Finally, call `syncPartnerDex(ctx.save)` and return the original result. All other gifts keep their original nickname dialogue.
 
-**Risks:** Post-gift normalization is party-dependent. A supported `pokemon.after_give` event could remove this wrapper, but no such event exists at this call site in the inspected upstream source.
+**Risks:** Post-gift normalization is party-dependent. The nickname prompt is temporarily changed in the shared text table during the synchronous gift command; changes to upstream naming flow should be reviewed. A supported `pokemon.after_give` event could replace the Pokédex part of this wrapper, but no such event exists at this call site in the inspected upstream source; a separate scoped nickname hook would also be needed.
 
 ### 4. `src.world.PikachuFollower.starterInParty`
 
