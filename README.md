@@ -29,30 +29,64 @@ Pikachu True Potential is a mod for **Pokémon Yellow on G1R Deluxe / Gen1Recomp
 
 **Good to know:** You still need the appropriate badges and normal game conditions to use HMs outside battle. These changes affect future move learning; Pokémon that already passed a level or learned a move will not have their moves retroactively rewritten.
 
-### Stat growth
+### Stat growth: Pikachu vs. True Potential vs. Raichu
 
-These are **base stats**, not the numbers shown on Pikachu's summary screen. Actual stats also depend on level, DVs, and stat experience.
+These are **Gen 1 base stats**, not the numbers shown on a Pokémon's summary screen. A regular Pikachu and a Raichu keep their species' base stats at every level; **only Oak's True Potential Pikachu grows toward Raichu's base stats**. Actual battle stats depend on level, DVs, and stat experience.
 
-| Level | HP | Attack | Defense | Speed | Special |
-| ---: | ---: | ---: | ---: | ---: | ---: |
-| 5 | 35 | 55 | 30 | 90 | 50 |
-| 10 | 40 | 62 | 35 | 92 | 58 |
-| 15 | 45 | 69 | 40 | 94 | 66 |
-| 20 | 50 | 76 | 45 | 96 | 74 |
-| 25 | 55 | 83 | 50 | 98 | 82 |
-| **30+** | **60** | **90** | **55** | **100** | **90** |
+| Level | Pokémon | HP | Attack | Defense | Speed | Special |
+| ---: | --- | ---: | ---: | ---: | ---: | ---: |
+| 5 | Regular Pikachu | 35 | 55 | 30 | 90 | 50 |
+| 5 | **True Potential Pikachu** | **35** | **55** | **30** | **90** | **50** |
+| 5 | Raichu | 60 | 90 | 55 | 100 | 90 |
+| 10 | Regular Pikachu | 35 | 55 | 30 | 90 | 50 |
+| 10 | **True Potential Pikachu** | **40** | **62** | **35** | **92** | **58** |
+| 10 | Raichu | 60 | 90 | 55 | 100 | 90 |
+| 15 | Regular Pikachu | 35 | 55 | 30 | 90 | 50 |
+| 15 | **True Potential Pikachu** | **45** | **69** | **40** | **94** | **66** |
+| 15 | Raichu | 60 | 90 | 55 | 100 | 90 |
+| 20 | Regular Pikachu | 35 | 55 | 30 | 90 | 50 |
+| 20 | **True Potential Pikachu** | **50** | **76** | **45** | **96** | **74** |
+| 20 | Raichu | 60 | 90 | 55 | 100 | 90 |
+| 25 | Regular Pikachu | 35 | 55 | 30 | 90 | 50 |
+| 25 | **True Potential Pikachu** | **55** | **83** | **50** | **98** | **82** |
+| 25 | Raichu | 60 | 90 | 55 | 100 | 90 |
+| 30+ | Regular Pikachu | 35 | 55 | 30 | 90 | 50 |
+| 30+ | **True Potential Pikachu** | **60** | **90** | **55** | **100** | **90** |
+| 30+ | Raichu | 60 | 90 | 55 | 100 | 90 |
 
-## Mod compatibility
+### Mod compatibility: player-tested
 
-**Crystal Animated Sprites with Shiny Visuals** Works
-**Pokedex mod** Bug where pokedex sees our True Potential picachu as a seperate pokemon, as such the pokedex might show 2 pokemon while Oak only recognises 1.
+The following mods were used alongside Pikachu True Potential in gameplay and **worked well**, with the one known Pokédex display discrepancy noted below. This is a report of the tested setup, not a guarantee for every version or mod combination.
 
-## Getting started
-Find the mod from mod search function in app, or download our release zip-file here and drag and drop in to the app.
+| Mod | Observed result |
+| --- | --- |
+| `all_tm_shop` | Worked |
+| `crystal_animated_sprites_with_shiny_visuals` | Worked; partner sprite/visual compatibility tested |
+| `DRAMATIC_SHAPE` | Worked |
+| `exp_share` | Worked |
+| `free_rare_candy` | Worked |
+| `guaranteed_catch` | Worked |
+| `hm_anywhere` | Worked |
+| `modern_pc_ui` | Worked |
+| `move_inspector` | Worked |
+| `move_learn_stats` | Worked |
+| `moves_manager` | Worked |
+| `pokedex_plus` | **Minor Pokédex count discrepancy** (see below) |
+| `quality_of_life` | Worked |
+| `reusable_machines` | Worked |
+| `running_shoes` | Worked |
 
-Install and enable the mod in **G1R Deluxe / Gen1Recomp with Pokémon Yellow imported**, then begin a Yellow game and receive Pikachu from Professor Oak as usual. The usual nickname prompt remains available. This mod does **not** include Pokémon Yellow ROM data or extracted assets.
+**Known `pokedex_plus` discrepancy:** Its Pokédex display may count True Potential Pikachu as a separate Pokémon, showing **two owned Pokémon where Professor Oak recognizes one**. This is a display/count inconsistency between the mods; it has not prevented the reported gameplay setup from working. True Potential Pikachu still represents Pikachu #025, and this mod preserves the normal Oak progression check.
 
-If you enable or disable the mod, **restart G1R Deluxe** before playing. Already-learned moves are not automatically changed.
+### Installation
+
+**Easiest: install inside G1R Deluxe.** Open the app's **mod search/list**, find **Pikachu True Potential**, and install and enable it there. The mod has been submitted to the in-app mod list; **its appearance in search depends on the listing being approved/published**.
+
+**Manual alternative:** Download the latest [release ZIP](https://github.com/twgrodd/G1R-Deluxe_Yellow_mod_Pikachu-True-Potential/releases/latest) and drag and drop it into the app, then enable the mod.
+
+You need **Pokémon Yellow imported** into G1R Deluxe / Gen1Recomp. Start a Yellow game and receive Pikachu from Professor Oak as usual. You can nickname your partner normally. The mod does **not** include Pokémon Yellow ROM data or extracted assets.
+
+**Restart G1R Deluxe after enabling, disabling, or changing mods.** Already-learned moves are not retroactively changed.
 
 ---
 
