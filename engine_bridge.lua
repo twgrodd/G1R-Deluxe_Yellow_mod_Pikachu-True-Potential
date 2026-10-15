@@ -41,31 +41,11 @@ function Bridge.install(mod, Growth)
     end
     if not hasPartner then return false end
 
-    -- The vanilla predicate contains the authoritative Yellow gates
-    -- (starter event, rival battle, ball state, bike, surf and sprite).
-    -- It checks ordinary PIKACHU, so provide a temporary *party view*
-    -- solely for the predicate. Never mutate the saved party.
-    local view = {}
-    for key, value in pairs(save) do view[key] = value end
-    view.party = {}
-    for i, mon in ipairs(save.party) do
-      if mon.species == ID then
-        local surrogate = {}
-        for key, value in pairs(mon) do surrogate[key] = value end
-        surrogate.species = "PIKACHU"
-        view.party[i] = surrogate
-      else
-        -- Hide ordinary Pikachu from the vanilla follower predicate.
-        local surrogate = {}
-        for key, value in pairs(mon) do surrogate[key] = value end
-        if surrogate.species == "PIKACHU" then surrogate.species = "__NOT_PARTNER__" end
-        view.party[i] = surrogate
-      end
-    end
-    local gameView = {}
-    for key, value in pairs(game) do gameView[key] = value end
-    gameView.save = view
-    return next(gameView, ow)
+    -- The vanilla predicate now calls our patched starterInParty, which
+    -- recognizes only the actual partner species. Do not disguise it as
+    -- ordinary PIKACHU: doing so makes starterInParty reject the partner
+    -- and prevents the follower from spawning. Preserve all engine gates.
+    return next(game, ow)
   end)
 
   mod.log:info("True Potential: follower spawn hook registered")

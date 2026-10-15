@@ -57,7 +57,7 @@ The mod's independent internal species is `TRUE_POTENTIAL_PIKACHU` (`ID`). It di
 ## Public extension points (not engine replacements)
 
 - `pokemon.before_give` event in `main.lua`: identifies Oak's original Yellow gift and substitutes `ID`. Runs **before** the engine's Pokédex bookkeeping.
-- `world.follower.spawn` hook in `engine_bridge.lua`: requires a healthy partner and passes a temporary game/save/party view to the vanilla predicate so vanilla event, ball, bicycle, surfing and sprite gates remain authoritative. Never mutates the actual save. Ordinary Pikachu are masked in the temporary view.
+- `world.follower.spawn` hook in `engine_bridge.lua`: requires a healthy partner and passes the original game/save to the vanilla predicate so vanilla event, ball, bicycle, surfing and sprite gates remain authoritative. The already-patched `starterInParty` recognizes only our partner species; disguising it as ordinary Pikachu would prevent spawning. No save mutation.
 - `PikachuFollower.onMoveLearned` is **not** replaced; it calls the wrapped identity helper.
 - The private `PikachuFollower.setShouldSpawn` predicate is **not** replaced.
 
