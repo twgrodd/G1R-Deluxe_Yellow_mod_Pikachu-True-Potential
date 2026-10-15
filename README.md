@@ -66,7 +66,7 @@ Compare **Gen 1 base stats** side by side. Only Oak's **⚡ True Potential Pikac
 | Special | 50 | 90 | **90** |
 | **Base stat total** | **260** | **395** | **395** |
 
-**Important:** These are **base stats**, not the numbers shown on the in-game summary screen. Actual HP and other stats at level 50 also depend on DVs and stat experience. With identical DVs and stat experience, a level-50 True Potential Pikachu and Raichu have the same battle stats. The example where True Potential Pikachu exceeds Raichu would require different underlying values.
+**Important:** These are **base stats**, not the numbers shown on the in-game summary screen. Actual HP and other stats at higher levels also depend on DVs and stat experience. From level 30 onward, True Potential Pikachu has the same base stats as Raichu; with identical DVs and stat experience, they have the same battle stats at the same level.
 
 ### Mod compatibility: player-tested
 
