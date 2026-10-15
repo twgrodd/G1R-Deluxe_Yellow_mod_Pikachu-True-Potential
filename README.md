@@ -46,6 +46,10 @@ These are **base stats**, not the numbers shown on Pikachu's summary screen. Act
 
 With **Crystal Animated Sprites with Shiny Visuals** (tested against its v2.0.3 source), True Potential Pikachu shares regular Pikachu's visual Pokédex key (#025) for animated battle art and shiny-variant selection. The special partner keeps its own stats, moves and identity. Restart the game after changing mods; the user has reported successful combined gameplay testing.
 
+## License
+
+**MIT License** — you may use, modify, redistribute, and incorporate this mod's original code into other projects, including commercial projects, as long as you retain the copyright and license notice. See [LICENSE](LICENSE). This license covers only the original material in this repository; Pokémon, G1R Deluxe, and third-party mods/assets retain their respective owners' rights. No Pokémon ROM data or extracted assets are included.
+
 ## Getting started
 
 Install and enable the mod in **G1R Deluxe / Gen1Recomp with Pokémon Yellow imported**, then begin a Yellow game and receive Pikachu from Professor Oak as usual. The usual nickname prompt remains available. This mod does **not** include Pokémon Yellow ROM data or extracted assets.
