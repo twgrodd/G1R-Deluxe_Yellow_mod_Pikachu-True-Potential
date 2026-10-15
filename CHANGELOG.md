@@ -1,11 +1,16 @@
 # Changelog
 
+## Unreleased
+
+### Documentation and licensing
+- Add the MIT License for the original mod code, allowing reuse, modification, and redistribution with the required copyright and license notice. Third-party software and Pokémon assets remain subject to their own rights.
+
 ## [1.0.2] - 2026-10-15
 
 ### Fixes
 - Restore True Potential Pikachu's Yellow overworld follower. The spawn hook previously disguised the partner as ordinary Pikachu, but the patched starter-recognition function requires the partner's real internal species ID. Passing the original game state to the vanilla spawn predicate resolves this conflict without another engine override.
 - Preserve all upstream follower spawn gates and ordinary Pikachu isolation.
-- Add regression coverage matching the upstream starter recognition behavior. In-game verification is still required.
+- Add regression coverage matching the upstream starter recognition behavior. Player testing subsequently confirmed that the follower appears again on the current G1R Deluxe version; additional transitions (such as map changes and PC use) have not all been reverified.
 
 ## [1.0.1] - 2026-10-14
 
