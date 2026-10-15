@@ -15,7 +15,7 @@ Pikachu True Potential is a mod for **Pokémon Yellow on G1R Deluxe / Gen1Recomp
 - **Learn five extra machines:** **HM02 Fly**, **HM03 Surf**, **HM04 Strength**, **TM26 Earthquake**, and **TM28 Dig**. Regular Pikachu keeps its normal TM/HM compatibility.
 - **Never evolve.** Your partner remains Pikachu, even after reaching Raichu-level stats.
 
-### New moves at a glance
+### Move changes
 
 | When | Move | What changes |
 | --- | --- | --- |
@@ -42,25 +42,17 @@ These are **base stats**, not the numbers shown on Pikachu's summary screen. Act
 | 25 | 55 | 83 | 50 | 98 | 82 |
 | **30+** | **60** | **90** | **55** | **100** | **90** |
 
-## Visual mod compatibility
+## Mod compatibility
 
-With **Crystal Animated Sprites with Shiny Visuals** (tested against its v2.0.3 source), True Potential Pikachu shares regular Pikachu's visual Pokédex key (#025) for animated battle art and shiny-variant selection. The special partner keeps its own stats, moves and identity. Restart the game after changing mods; the user has reported successful combined gameplay testing.
-
-## License
-
-**MIT License** — you may use, modify, redistribute, and incorporate this mod's original code into other projects, including commercial projects, as long as you retain the copyright and license notice. See [LICENSE](LICENSE). This license covers only the original material in this repository; Pokémon, G1R Deluxe, and third-party mods/assets retain their respective owners' rights. No Pokémon ROM data or extracted assets are included.
+**Crystal Animated Sprites with Shiny Visuals** Works
+**Pokedex mod** Bug where pokedex sees our True Potential picachu as a seperate pokemon, as such the pokedex might show 2 pokemon while Oak only recognises 1.
 
 ## Getting started
+Find the mod from mod search function in app, or download our release zip-file here and drag and drop in to the app.
 
 Install and enable the mod in **G1R Deluxe / Gen1Recomp with Pokémon Yellow imported**, then begin a Yellow game and receive Pikachu from Professor Oak as usual. The usual nickname prompt remains available. This mod does **not** include Pokémon Yellow ROM data or extracted assets.
 
 If you enable or disable the mod, **restart G1R Deluxe** before playing. Already-learned moves are not automatically changed.
-
-## Current status and testing
-
-**Official public release — v1.0.2.** Includes Double Kick, Amnesia, Fly, Surf, Strength, Earthquake, and Dig for True Potential Pikachu, plus the Crystal animated sprite compatibility and nickname prompt fixes. Player testing has reported that the updated setup works well.
-
-Earlier gameplay testing covered levels 5–100, partner following/interactions, Pokédex #025, Oak's Parcel, and PC/save/restart behavior. The v0.1.7 combination with Crystal Animated Sprites has also been reported working in gameplay. Not every mod combination has been tested, and hot disabling/re-enabling remains unsupported; restart after changing enabled mods.
 
 ---
 
