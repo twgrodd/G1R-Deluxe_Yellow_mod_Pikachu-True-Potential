@@ -29,30 +29,44 @@ Pikachu True Potential is a mod for **Pokémon Yellow on G1R Deluxe / Gen1Recomp
 
 **Good to know:** You still need the appropriate badges and normal game conditions to use HMs outside battle. These changes affect future move learning; Pokémon that already passed a level or learned a move will not have their moves retroactively rewritten.
 
-### Stat growth: Pikachu vs. True Potential vs. Raichu
+### Stat comparison
 
-These are **Gen 1 base stats**, not the numbers shown on a Pokémon's summary screen. A regular Pikachu and a Raichu keep their species' base stats at every level; **only Oak's True Potential Pikachu grows toward Raichu's base stats**. Actual battle stats depend on level, DVs, and stat experience.
+Compare **Gen 1 base stats** side by side. Only Oak's **⚡ True Potential Pikachu** gains base stats as it levels up; regular Pikachu and Raichu keep their usual base stats.
 
-| Level | Pokémon | HP | Attack | Defense | Speed | Special |
-| ---: | --- | ---: | ---: | ---: | ---: | ---: |
-| 5 | Regular Pikachu | 35 | 55 | 30 | 90 | 50 |
-| 5 | **True Potential Pikachu** | **35** | **55** | **30** | **90** | **50** |
-| 5 | Raichu | 60 | 90 | 55 | 100 | 90 |
-| 10 | Regular Pikachu | 35 | 55 | 30 | 90 | 50 |
-| 10 | **True Potential Pikachu** | **40** | **62** | **35** | **92** | **58** |
-| 10 | Raichu | 60 | 90 | 55 | 100 | 90 |
-| 15 | Regular Pikachu | 35 | 55 | 30 | 90 | 50 |
-| 15 | **True Potential Pikachu** | **45** | **69** | **40** | **94** | **66** |
-| 15 | Raichu | 60 | 90 | 55 | 100 | 90 |
-| 20 | Regular Pikachu | 35 | 55 | 30 | 90 | 50 |
-| 20 | **True Potential Pikachu** | **50** | **76** | **45** | **96** | **74** |
-| 20 | Raichu | 60 | 90 | 55 | 100 | 90 |
-| 25 | Regular Pikachu | 35 | 55 | 30 | 90 | 50 |
-| 25 | **True Potential Pikachu** | **55** | **83** | **50** | **98** | **82** |
-| 25 | Raichu | 60 | 90 | 55 | 100 | 90 |
-| 30+ | Regular Pikachu | 35 | 55 | 30 | 90 | 50 |
-| 30+ | **True Potential Pikachu** | **60** | **90** | **55** | **100** | **90** |
-| 30+ | Raichu | 60 | 90 | 55 | 100 | 90 |
+#### Level 5
+
+| Stat | Regular Pikachu | Raichu | ⚡ True Potential Pikachu |
+| :--- | ---: | ---: | ---: |
+| HP | 35 | 60 | **35** |
+| Attack | 55 | 90 | **55** |
+| Defense | 30 | 55 | **30** |
+| Speed | 90 | 100 | **90** |
+| Special | 50 | 90 | **50** |
+| **Base stat total** | **260** | **395** | **260** |
+
+#### Level 20
+
+| Stat | Regular Pikachu | Raichu | ⚡ True Potential Pikachu |
+| :--- | ---: | ---: | ---: |
+| HP | 35 | 60 | **50** |
+| Attack | 55 | 90 | **76** |
+| Defense | 30 | 55 | **45** |
+| Speed | 90 | 100 | **96** |
+| Special | 50 | 90 | **74** |
+| **Base stat total** | **260** | **395** | **341** |
+
+#### Level 30+ (including 50)
+
+| Stat | Regular Pikachu | Raichu | ⚡ True Potential Pikachu |
+| :--- | ---: | ---: | ---: |
+| HP | 35 | 60 | **60** |
+| Attack | 55 | 90 | **90** |
+| Defense | 30 | 55 | **55** |
+| Speed | 90 | 100 | **100** |
+| Special | 50 | 90 | **90** |
+| **Base stat total** | **260** | **395** | **395** |
+
+**Important:** These are **base stats**, not the numbers shown on the in-game summary screen. Actual HP and other stats at level 50 also depend on DVs and stat experience. With identical DVs and stat experience, a level-50 True Potential Pikachu and Raichu have the same battle stats. The example where True Potential Pikachu exceeds Raichu would require different underlying values.
 
 ### Mod compatibility: player-tested
 
