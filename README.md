@@ -55,7 +55,7 @@ Compare **Gen 1 base stats** side by side. Only Oak's **⚡ True Potential Pikac
 | Special | 50 | 90 | **74** |
 | **Base stat total** | **260** | **395** | **341** |
 
-#### Level 30+ (including 50)
+#### Level 30+
 
 | Stat | Regular Pikachu | Raichu | ⚡ True Potential Pikachu |
 | :--- | ---: | ---: | ---: |
