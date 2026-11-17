@@ -92,60 +92,62 @@ The tables below show the moves available to **True Potential Pikachu** in Poké
 
 #### Moves learned by level-up
 
-| Level | Move | Notes |
-| ---: | --- | --- |
-| 1 | Growl | Original |
-| 1 | ThunderShock | Original |
-| 6 | Tail Whip | Original |
-| 8 | Thunder Wave | Original |
-| 9 | **Double Kick** | **Added** |
-| 11 | Quick Attack | Original |
-| 15 | Double Team | Original |
-| 20 | Slam | Original |
-| 26 | Thunderbolt | Original |
-| 31 | **Amnesia** | **Added** |
-| 33 | Agility | Original; preserved |
-| 41 | Thunder | Original |
-| 50 | Light Screen | Original |
+| Level | Move | Type | Category | Power | Acc. | Notes |
+| ---: | --- | --- | --- | ---: | ---: | --- |
+| 1 | Growl | Normal | Status | — | 100 | Original |
+| 1 | ThunderShock | Electric | Special | 40 | 100 | Original |
+| 6 | Tail Whip | Normal | Status | — | 100 | Original |
+| 8 | Thunder Wave | Electric | Status | — | 100 | Original |
+| 9 | **Double Kick** | Fighting | Physical | 30 | 100 | **Added** |
+| 11 | Quick Attack | Normal | Physical | 40 | 100 | Original |
+| 15 | Double Team | Normal | Status | — | — | Original |
+| 20 | Slam | Normal | Physical | 80 | 75 | Original |
+| 26 | Thunderbolt | Electric | Special | 95 | 100 | Original |
+| 31 | **Amnesia** | Psychic | Status | — | — | **Added** |
+| 33 | Agility | Psychic | Status | — | — | Original; preserved |
+| 41 | Thunder | Electric | Special | 120 | 70 | Original |
+| 50 | Light Screen | Psychic | Status | — | — | Original |
 
 #### Moves learned by HM
 
-| HM | Move | Notes |
-| ---: | --- | --- |
-| HM02 | **Fly** | **Added compatibility** |
-| HM03 | **Surf** | **Added compatibility** |
-| HM04 | **Strength** | **Added compatibility** |
-| HM05 | Flash | Original compatibility |
+| HM | Move | Type | Category | Power | Acc. | Notes |
+| ---: | --- | --- | --- | ---: | ---: | --- |
+| HM02 | **Fly** | Flying | Physical | 70 | 95 | **Added compatibility** |
+| HM03 | **Surf** | Water | Special | 95 | 100 | **Added compatibility** |
+| HM04 | **Strength** | Normal | Physical | 80 | 100 | **Added compatibility** |
+| HM05 | Flash | Normal | Status | — | 70 | Original compatibility |
 
 #### Moves learned by TM
 
-| TM | Move | Notes |
-| ---: | --- | --- |
-| TM01 | Mega Punch | Original compatibility |
-| TM05 | Mega Kick | Original compatibility |
-| TM06 | Toxic | Original compatibility |
-| TM08 | Body Slam | Original compatibility |
-| TM09 | Take Down | Original compatibility |
-| TM10 | Double-Edge | Original compatibility |
-| TM16 | Pay Day | Original compatibility |
-| TM17 | Submission | Original compatibility |
-| TM19 | Seismic Toss | Original compatibility |
-| TM20 | Rage | Original compatibility |
-| TM24 | Thunderbolt | Original compatibility |
-| TM25 | Thunder | Original compatibility |
-| TM26 | **Earthquake** | **Added compatibility** |
-| TM28 | **Dig** | **Added compatibility** |
-| TM31 | Mimic | Original compatibility |
-| TM32 | Double Team | Original compatibility |
-| TM33 | Reflect | Original compatibility |
-| TM34 | Bide | Original compatibility |
-| TM39 | Swift | Original compatibility |
-| TM40 | Skull Bash | Original compatibility |
-| TM44 | Rest | Original compatibility |
-| TM45 | Thunder Wave | Original compatibility |
-| TM50 | Substitute | Original compatibility |
+| TM | Move | Type | Category | Power | Acc. | Notes |
+| ---: | --- | --- | --- | ---: | ---: | --- |
+| TM01 | Mega Punch | Normal | Physical | 80 | 85 | Original compatibility |
+| TM05 | Mega Kick | Normal | Physical | 120 | 75 | Original compatibility |
+| TM06 | Toxic | Poison | Status | — | 85 | Original compatibility |
+| TM08 | Body Slam | Normal | Physical | 85 | 100 | Original compatibility |
+| TM09 | Take Down | Normal | Physical | 90 | 85 | Original compatibility |
+| TM10 | Double-Edge | Normal | Physical | 100 | 100 | Original compatibility |
+| TM16 | Pay Day | Normal | Physical | 40 | 100 | Original compatibility |
+| TM17 | Submission | Fighting | Physical | 80 | 80 | Original compatibility |
+| TM19 | Seismic Toss | Fighting | Physical | — | 100 | Original compatibility |
+| TM20 | Rage | Normal | Physical | 20 | 100 | Original compatibility |
+| TM24 | Thunderbolt | Electric | Special | 95 | 100 | Original compatibility |
+| TM25 | Thunder | Electric | Special | 120 | 70 | Original compatibility |
+| TM26 | **Earthquake** | Ground | Physical | 100 | 100 | **Added compatibility** |
+| TM28 | **Dig** | Ground | Physical | 100 | 100 | **Added compatibility** |
+| TM31 | Mimic | Normal | Status | — | 100 | Original compatibility |
+| TM32 | Double Team | Normal | Status | — | — | Original compatibility |
+| TM33 | Reflect | Psychic | Status | — | — | Original compatibility |
+| TM34 | Bide | Normal | Physical | — | — | Original compatibility |
+| TM39 | Swift | Normal | Physical | 60 | ∞ | Original compatibility |
+| TM40 | Skull Bash | Normal | Physical | 100 | 100 | Original compatibility |
+| TM44 | Rest | Psychic | Status | — | — | Original compatibility |
+| TM45 | Thunder Wave | Electric | Status | — | 100 | Original compatibility |
+| TM50 | Substitute | Normal | Status | — | — | Original compatibility |
 
 **Good to know:** True Potential Pikachu keeps Pikachu's original level-up moves and machine compatibility, with the additions highlighted above. You still need the appropriate badges and must meet the game's normal requirements to use HMs outside battle. Learnset changes do not retroactively change moves on a Pokémon that has already passed the relevant level.
+
+**Category note:** In Generation I, a move's type determines whether it is Physical or Special; Status moves do not deal direct damage. Power and accuracy are shown using Pokémon Yellow's values. `—` means the value is not applicable or is not listed, and `∞` indicates Swift's perfect accuracy.
 
 ---
 
