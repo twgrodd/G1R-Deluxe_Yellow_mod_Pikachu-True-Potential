@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Partner learnset
+- Add Amnesia at level 31 while restoring the original Agility learnset move at level 33. This change applies to True Potential Pikachu only; ordinary Pikachu is unchanged.
+
 ### Documentation and licensing
 - Add the MIT License for the original mod code, allowing reuse, modification, and redistribution with the required copyright and license notice. Third-party software and Pokémon assets remain subject to their own rights.
 
