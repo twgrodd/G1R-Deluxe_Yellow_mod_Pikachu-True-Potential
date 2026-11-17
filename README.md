@@ -6,22 +6,19 @@ Pikachu True Potential is a mod for **Pokémon Yellow on G1R Deluxe / Gen1Recomp
 
 > **Only Oak's starter Pikachu gets these upgrades.** Wild and traded Pikachu, and Raichu, remain unchanged. There is no in-game choice between the original and enhanced starter: enabling the mod gives you True Potential Pikachu.
 
-## What your partner can do
+## What this mod does
 
-- **Grow stronger without evolving.** Base stats start at ordinary Pikachu values at level 5 and reach Raichu values at level 30; levels in between scale gradually.
-- **Stay your Yellow partner.** Pikachu still follows you, can be interacted with, uses Yellow's happiness mechanics, and can be nicknamed normally.
-- **Learn Double Kick at level 9.** This is an *additional* level-up move; it does not replace the existing level-9 move.
-- **Learn Amnesia at level 31 and keep Agility at level 33.** Both moves are available to your partner.
-- **Learn five extra machines:** **HM02 Fly**, **HM03 Surf**, **HM04 Strength**, **TM26 Earthquake**, and **TM28 Dig**. Regular Pikachu keeps its normal TM/HM compatibility.
-- **Never evolve.** Your partner remains Pikachu, even after reaching Raichu-level stats.
+- Base stats start at ordinary Pikachu values at level 5 and reach Raichu values at level 30; levels in between scale gradually.
+- Base stats after level 30 follows Raichu, so its not stronger than a Raichu.
+- **Added level up moves:** Learn Double Kick at level 9 and Amnesia at level 31.
+- **Inspired by Let's Go Pikachu:** Added HM/TMs: Fly*, Surf*, Strength, Earthquake and Dig.
 
-### Move changes
+### List of Move changes
 
 | When | Move | What changes |
 | --- | --- | --- |
-| Level 9 | **Double Kick** | Added move|
-| Level 31 | **Amnesia** | Added move; original Agility remains available |
-| Level 33 | **Agility** | Original Pikachu level-up move, preserved |
+| Level 9 | **Double Kick** | Added move |
+| Level 31 | **Amnesia** | Added move |
 | HM02 | **Fly** | Extra HM compatibility |
 | HM03 | **Surf** | Extra HM compatibility |
 | HM04 | **Strength** | Extra HM compatibility |
