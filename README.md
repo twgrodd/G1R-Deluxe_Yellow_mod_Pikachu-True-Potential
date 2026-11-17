@@ -94,19 +94,19 @@ The tables below show the moves available to **True Potential Pikachu** in Poké
 
 | Level | Move | Type | Category | Power | Acc. | Notes |
 | ---: | --- | --- | --- | ---: | ---: | --- |
-| 1 | Growl | Normal | Status | — | 100 | Original |
-| 1 | ThunderShock | Electric | Special | 40 | 100 | Original |
-| 6 | Tail Whip | Normal | Status | — | 100 | Original |
-| 8 | Thunder Wave | Electric | Status | — | 100 | Original |
+| 1 | Growl | Normal | Status | — | 100 |  |
+| 1 | ThunderShock | Electric | Special | 40 | 100 |  |
+| 6 | Tail Whip | Normal | Status | — | 100 |  |
+| 8 | Thunder Wave | Electric | Status | — | 100 |  |
 | 9 | **Double Kick** | Fighting | Physical | 30 | 100 | **Added** |
-| 11 | Quick Attack | Normal | Physical | 40 | 100 | Original |
-| 15 | Double Team | Normal | Status | — | — | Original |
-| 20 | Slam | Normal | Physical | 80 | 75 | Original |
-| 26 | Thunderbolt | Electric | Special | 95 | 100 | Original |
+| 11 | Quick Attack | Normal | Physical | 40 | 100 |  |
+| 15 | Double Team | Normal | Status | — | — |  |
+| 20 | Slam | Normal | Physical | 80 | 75 |  |
+| 26 | Thunderbolt | Electric | Special | 95 | 100 |  |
 | 31 | **Amnesia** | Psychic | Status | — | — | **Added** |
-| 33 | Agility | Psychic | Status | — | — | Original; preserved |
-| 41 | Thunder | Electric | Special | 120 | 70 | Original |
-| 50 | Light Screen | Psychic | Status | — | — | Original |
+| 33 | Agility | Psychic | Status | — | — | |
+| 41 | Thunder | Electric | Special | 120 | 70 |  |
+| 50 | Light Screen | Psychic | Status | — | — |  |
 
 #### Moves learned by HM
 
