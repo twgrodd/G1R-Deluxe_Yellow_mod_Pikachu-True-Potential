@@ -10,7 +10,7 @@ Pikachu True Potential is a mod for **Pokémon Yellow on G1R Deluxe / Gen1Recomp
 
 - Base stats start at ordinary Pikachu values at level 5 and reach Raichu values at level 30; levels in between scale gradually.
 - At level 30 and above, its base stats remain equal to Raichu's; it does not become stronger than Raichu.
-- **Additional level-up moves:** Learn Double Kick at level 9 and Amnesia at level 31. The original Agility move at level 33 is preserved.
+- **Additional level-up moves:** Learn Double Kick at level 9 and Amnesia at level 31.
 - **Inspired by Pokémon: Let's Go, Pikachu!:** Gain compatibility with Fly, Surf, Strength, Earthquake, and Dig.
 
 ### Move changes
