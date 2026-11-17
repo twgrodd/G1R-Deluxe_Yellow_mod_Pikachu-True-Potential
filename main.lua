@@ -39,16 +39,28 @@ return function(mod)
       compatible[move] = true
     end
   end
-  -- Replace only partner level-33 Agility with Amnesia.
+  -- Add partner-only Amnesia at level 31 while preserving vanilla Agility at level 33.
   -- Clone learnset entries so vanilla Pikachu stays unchanged.
   partner.learnset = {}
   for i, entry in ipairs(normal.learnset or {}) do
     local copy = {}
     for key, value in pairs(entry) do copy[key] = value end
-    if copy.level == 33 and copy.move == "AGILITY" then
-      copy.move = "AMNESIA"
+        partner.learnset[i] = copy
+  end
+  -- Add Amnesia at level 31 without replacing Agility at level 33.
+  local hasAmnesia = false
+  for _, entry in ipairs(partner.learnset) do
+    if entry.level == 31 and entry.move == "AMNESIA" then
+      hasAmnesia = true
+      break
     end
-    partner.learnset[i] = copy
+  end
+  if not hasAmnesia then
+    local position = #partner.learnset + 1
+    for i, entry in ipairs(partner.learnset) do
+      if entry.level > 31 then position = i; break end
+    end
+    table.insert(partner.learnset, position, { level = 31, move = "AMNESIA" })
   end
   -- Add Double Kick at level 9 without replacing Quick Attack.
   -- Keep entries sorted for level-up and Day Care move learning.
