@@ -18,7 +18,8 @@ Pikachu True Potential is a mod for **Pokémon Yellow on G1R Deluxe / Gen1Recomp
 | When | Move | What changes |
 | --- | --- | --- |
 | Level 9 | **Double Kick** | Added move |
-| Level 31 | **Amnesia** | Added move |\n| Level 33 | **Agility** | Original Pikachu level-up move; preserved |
+| Level 31 | **Amnesia** | Added move |
+| Level 33 | **Agility** | Original Pikachu level-up move; preserved |
 | HM02 | **Fly** | Extra HM compatibility |
 | HM03 | **Surf** | Extra HM compatibility |
 | HM04 | **Strength** | Extra HM compatibility |
