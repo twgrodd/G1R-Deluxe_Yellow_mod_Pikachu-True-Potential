@@ -115,35 +115,35 @@ The tables below show the moves available to **True Potential Pikachu** in Poké
 | HM02 | **Fly** | Flying | Physical | 70 | 95 | **Added compatibility** |
 | HM03 | **Surf** | Water | Special | 95 | 100 | **Added compatibility** |
 | HM04 | **Strength** | Normal | Physical | 80 | 100 | **Added compatibility** |
-| HM05 | Flash | Normal | Status | — | 70 | Original compatibility |
+| HM05 | Flash | Normal | Status | — | 70 | |
 
 #### Moves learned by TM
 
 | TM | Move | Type | Category | Power | Acc. | Notes |
 | ---: | --- | --- | --- | ---: | ---: | --- |
-| TM01 | Mega Punch | Normal | Physical | 80 | 85 | Original compatibility |
-| TM05 | Mega Kick | Normal | Physical | 120 | 75 | Original compatibility |
-| TM06 | Toxic | Poison | Status | — | 85 | Original compatibility |
-| TM08 | Body Slam | Normal | Physical | 85 | 100 | Original compatibility |
-| TM09 | Take Down | Normal | Physical | 90 | 85 | Original compatibility |
-| TM10 | Double-Edge | Normal | Physical | 100 | 100 | Original compatibility |
-| TM16 | Pay Day | Normal | Physical | 40 | 100 | Original compatibility |
-| TM17 | Submission | Fighting | Physical | 80 | 80 | Original compatibility |
-| TM19 | Seismic Toss | Fighting | Physical | — | 100 | Original compatibility |
-| TM20 | Rage | Normal | Physical | 20 | 100 | Original compatibility |
-| TM24 | Thunderbolt | Electric | Special | 95 | 100 | Original compatibility |
-| TM25 | Thunder | Electric | Special | 120 | 70 | Original compatibility |
+| TM01 | Mega Punch | Normal | Physical | 80 | 85 | |
+| TM05 | Mega Kick | Normal | Physical | 120 | 75 | |
+| TM06 | Toxic | Poison | Status | — | 85 | |
+| TM08 | Body Slam | Normal | Physical | 85 | 100 | |
+| TM09 | Take Down | Normal | Physical | 90 | 85 | |
+| TM10 | Double-Edge | Normal | Physical | 100 | 100 | |
+| TM16 | Pay Day | Normal | Physical | 40 | 100 | |
+| TM17 | Submission | Fighting | Physical | 80 | 80 | |
+| TM19 | Seismic Toss | Fighting | Physical | — | 100 | |
+| TM20 | Rage | Normal | Physical | 20 | 100 | |
+| TM24 | Thunderbolt | Electric | Special | 95 | 100 | |
+| TM25 | Thunder | Electric | Special | 120 | 70 | |
 | TM26 | **Earthquake** | Ground | Physical | 100 | 100 | **Added compatibility** |
 | TM28 | **Dig** | Ground | Physical | 100 | 100 | **Added compatibility** |
-| TM31 | Mimic | Normal | Status | — | 100 | Original compatibility |
-| TM32 | Double Team | Normal | Status | — | — | Original compatibility |
-| TM33 | Reflect | Psychic | Status | — | — | Original compatibility |
-| TM34 | Bide | Normal | Physical | — | — | Original compatibility |
-| TM39 | Swift | Normal | Physical | 60 | ∞ | Original compatibility |
-| TM40 | Skull Bash | Normal | Physical | 100 | 100 | Original compatibility |
-| TM44 | Rest | Psychic | Status | — | — | Original compatibility |
-| TM45 | Thunder Wave | Electric | Status | — | 100 | Original compatibility |
-| TM50 | Substitute | Normal | Status | — | — | Original compatibility |
+| TM31 | Mimic | Normal | Status | — | 100 | |
+| TM32 | Double Team | Normal | Status | — | — | |
+| TM33 | Reflect | Psychic | Status | — | — | |
+| TM34 | Bide | Normal | Physical | — | — | |
+| TM39 | Swift | Normal | Physical | 60 | ∞ | |
+| TM40 | Skull Bash | Normal | Physical | 100 | 100 | |
+| TM44 | Rest | Psychic | Status | — | — | |
+| TM45 | Thunder Wave | Electric | Status | — | 100 | |
+| TM50 | Substitute | Normal | Status | — | — | |
 
 **Good to know:** True Potential Pikachu keeps Pikachu's original level-up moves and machine compatibility, with the additions highlighted above. You still need the appropriate badges and must meet the game's normal requirements to use HMs outside battle. Learnset changes do not retroactively change moves on a Pokémon that has already passed the relevant level.
 
