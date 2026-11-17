@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.3] - 2026-11-17
+
+### Partner learnset
+- Add Amnesia at level 31 while preserving Pikachu's original Agility move at level 33. This change applies only to True Potential Pikachu; ordinary Pikachu is unchanged.
+
+### Documentation and licensing
+- Clarify the partner's stat progression, move changes, and installation instructions.
+- Add the MIT License for the original mod code. Pokémon assets and third-party software remain subject to their respective rights.
+
 ## Unreleased
 
 ### Partner learnset
