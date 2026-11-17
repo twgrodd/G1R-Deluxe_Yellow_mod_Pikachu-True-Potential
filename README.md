@@ -19,7 +19,7 @@ Pikachu True Potential is a mod for **Pokémon Yellow on G1R Deluxe / Gen1Recomp
 
 | When | Move | What changes |
 | --- | --- | --- |
-| Level 9 | **Double Kick** | Added alongside the original level-up move |
+| Level 9 | **Double Kick** | Added move|
 | Level 33 | **Amnesia** | Replaces Agility for your special partner |
 | HM02 | **Fly** | Extra HM compatibility |
 | HM03 | **Surf** | Extra HM compatibility |
