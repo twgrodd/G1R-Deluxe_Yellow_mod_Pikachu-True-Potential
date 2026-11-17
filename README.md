@@ -13,67 +13,6 @@ Pikachu True Potential is a mod for **Pokémon Yellow on G1R Deluxe / Gen1Recomp
 - **Additional level-up moves:** Learn Double Kick at level 9 and Amnesia at level 31.
 - **Inspired by Pokémon: Let's Go, Pikachu!:** Gain compatibility with Fly, Surf, Strength, Earthquake, and Dig.
 
-### Moves learned and machine compatibility
-
-The tables below show the moves available to **True Potential Pikachu** in Pokémon Yellow. Moves marked **Added** are unique to this mod; the original Pikachu moves and compatibility are retained.
-
-#### Moves learned by level-up
-
-| Level | Move | Notes |
-| ---: | --- | --- |
-| 1 | Growl | Original |
-| 1 | ThunderShock | Original |
-| 6 | Tail Whip | Original |
-| 8 | Thunder Wave | Original |
-| 9 | **Double Kick** | **Added** |
-| 11 | Quick Attack | Original |
-| 15 | Double Team | Original |
-| 20 | Slam | Original |
-| 26 | Thunderbolt | Original |
-| 31 | **Amnesia** | **Added** |
-| 33 | Agility | Original; preserved |
-| 41 | Thunder | Original |
-| 50 | Light Screen | Original |
-
-#### Moves learned by HM
-
-| HM | Move | Notes |
-| ---: | --- | --- |
-| HM02 | **Fly** | **Added compatibility** |
-| HM03 | **Surf** | **Added compatibility** |
-| HM04 | **Strength** | **Added compatibility** |
-| HM05 | Flash | Original compatibility |
-
-#### Moves learned by TM
-
-| TM | Move | Notes |
-| ---: | --- | --- |
-| TM01 | Mega Punch | Original compatibility |
-| TM05 | Mega Kick | Original compatibility |
-| TM06 | Toxic | Original compatibility |
-| TM08 | Body Slam | Original compatibility |
-| TM09 | Take Down | Original compatibility |
-| TM10 | Double-Edge | Original compatibility |
-| TM16 | Pay Day | Original compatibility |
-| TM17 | Submission | Original compatibility |
-| TM19 | Seismic Toss | Original compatibility |
-| TM20 | Rage | Original compatibility |
-| TM24 | Thunderbolt | Original compatibility |
-| TM25 | Thunder | Original compatibility |
-| TM26 | **Earthquake** | **Added compatibility** |
-| TM28 | **Dig** | **Added compatibility** |
-| TM31 | Mimic | Original compatibility |
-| TM32 | Double Team | Original compatibility |
-| TM33 | Reflect | Original compatibility |
-| TM34 | Bide | Original compatibility |
-| TM39 | Swift | Original compatibility |
-| TM40 | Skull Bash | Original compatibility |
-| TM44 | Rest | Original compatibility |
-| TM45 | Thunder Wave | Original compatibility |
-| TM50 | Substitute | Original compatibility |
-
-**Good to know:** True Potential Pikachu keeps Pikachu's original level-up moves and machine compatibility, with the additions highlighted above. You still need the appropriate badges and must meet the game's normal requirements to use HMs outside battle. Learnset changes do not retroactively change moves on a Pokémon that has already passed the relevant level.
-
 ### Stat comparison
 
 Compare **Gen 1 base stats** side by side. Only Oak's **True Potential Pikachu** gains base stats as it levels up; regular Pikachu and Raichu keep their usual base stats.
@@ -146,6 +85,67 @@ The following mods were used alongside Pikachu True Potential in gameplay and **
 You must have **Pokémon Yellow imported** into G1R Deluxe / Gen1Recomp. Start a new Yellow game and receive Pikachu from Professor Oak as usual. You can nickname your partner normally. The mod does **not** include Pokémon Yellow ROM data or extracted assets.
 
 **Restart G1R Deluxe after enabling, disabling, or changing mods.** Already-learned moves are not changed retroactively.
+
+### Moves learned and machine compatibility
+
+The tables below show the moves available to **True Potential Pikachu** in Pokémon Yellow. Moves marked **Added** are unique to this mod; the original Pikachu moves and compatibility are retained.
+
+#### Moves learned by level-up
+
+| Level | Move | Notes |
+| ---: | --- | --- |
+| 1 | Growl | Original |
+| 1 | ThunderShock | Original |
+| 6 | Tail Whip | Original |
+| 8 | Thunder Wave | Original |
+| 9 | **Double Kick** | **Added** |
+| 11 | Quick Attack | Original |
+| 15 | Double Team | Original |
+| 20 | Slam | Original |
+| 26 | Thunderbolt | Original |
+| 31 | **Amnesia** | **Added** |
+| 33 | Agility | Original; preserved |
+| 41 | Thunder | Original |
+| 50 | Light Screen | Original |
+
+#### Moves learned by HM
+
+| HM | Move | Notes |
+| ---: | --- | --- |
+| HM02 | **Fly** | **Added compatibility** |
+| HM03 | **Surf** | **Added compatibility** |
+| HM04 | **Strength** | **Added compatibility** |
+| HM05 | Flash | Original compatibility |
+
+#### Moves learned by TM
+
+| TM | Move | Notes |
+| ---: | --- | --- |
+| TM01 | Mega Punch | Original compatibility |
+| TM05 | Mega Kick | Original compatibility |
+| TM06 | Toxic | Original compatibility |
+| TM08 | Body Slam | Original compatibility |
+| TM09 | Take Down | Original compatibility |
+| TM10 | Double-Edge | Original compatibility |
+| TM16 | Pay Day | Original compatibility |
+| TM17 | Submission | Original compatibility |
+| TM19 | Seismic Toss | Original compatibility |
+| TM20 | Rage | Original compatibility |
+| TM24 | Thunderbolt | Original compatibility |
+| TM25 | Thunder | Original compatibility |
+| TM26 | **Earthquake** | **Added compatibility** |
+| TM28 | **Dig** | **Added compatibility** |
+| TM31 | Mimic | Original compatibility |
+| TM32 | Double Team | Original compatibility |
+| TM33 | Reflect | Original compatibility |
+| TM34 | Bide | Original compatibility |
+| TM39 | Swift | Original compatibility |
+| TM40 | Skull Bash | Original compatibility |
+| TM44 | Rest | Original compatibility |
+| TM45 | Thunder Wave | Original compatibility |
+| TM50 | Substitute | Original compatibility |
+
+**Good to know:** True Potential Pikachu keeps Pikachu's original level-up moves and machine compatibility, with the additions highlighted above. You still need the appropriate badges and must meet the game's normal requirements to use HMs outside battle. Learnset changes do not retroactively change moves on a Pokémon that has already passed the relevant level.
 
 ---
 
