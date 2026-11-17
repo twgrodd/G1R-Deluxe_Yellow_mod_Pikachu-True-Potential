@@ -9,23 +9,23 @@ Pikachu True Potential is a mod for **Pokémon Yellow on G1R Deluxe / Gen1Recomp
 ## What this mod does
 
 - Base stats start at ordinary Pikachu values at level 5 and reach Raichu values at level 30; levels in between scale gradually.
-- Base stats after level 30 follows Raichu, so its not stronger than a Raichu.
-- **Added level up moves:** Learn Double Kick at level 9 and Amnesia at level 31.
-- **Inspired by Let's Go Pikachu:** Added HM/TMs: Fly*, Surf*, Strength, Earthquake and Dig.
+- At level 30 and above, its base stats remain equal to Raichu's; it does not become stronger than Raichu.
+- **Additional level-up moves:** Learn Double Kick at level 9 and Amnesia at level 31. The original Agility move at level 33 is preserved.
+- **Inspired by Pokémon: Let's Go, Pikachu!:** Gain compatibility with Fly, Surf, Strength, Earthquake, and Dig.
 
-### List of Move changes
+### Move changes
 
 | When | Move | What changes |
 | --- | --- | --- |
 | Level 9 | **Double Kick** | Added move |
-| Level 31 | **Amnesia** | Added move |
+| Level 31 | **Amnesia** | Added move |\n| Level 33 | **Agility** | Original Pikachu level-up move; preserved |
 | HM02 | **Fly** | Extra HM compatibility |
 | HM03 | **Surf** | Extra HM compatibility |
 | HM04 | **Strength** | Extra HM compatibility |
 | TM26 | **Earthquake** | Extra TM compatibility |
 | TM28 | **Dig** | Extra TM compatibility |
 
-**Good to know:** You still need the appropriate badges and normal game conditions to use HMs outside battle. These changes affect future move learning; Pokémon that already passed a level or learned a move will not have their moves retroactively rewritten.
+**Good to know:** You still need the appropriate badges and must meet the game's normal requirements to use HMs outside battle. The learnset changes apply when a Pokémon reaches the relevant level; they do not retroactively change moves on Pokémon that have already passed that level.
 
 ### Stat comparison
 
@@ -53,7 +53,7 @@ Compare **Gen 1 base stats** side by side. Only Oak's **True Potential Pikachu**
 | Special | 50 | 90 | **74** |
 | **Base stat total** | **260** | **395** | **341** |
 
-#### Level 30+
+#### Level 30 and above
 
 | Stat | Regular Pikachu | Raichu | ⚡ True Potential Pikachu |
 | :--- | ---: | ---: | ---: |
@@ -92,13 +92,13 @@ The following mods were used alongside Pikachu True Potential in gameplay and **
 
 ### Installation
 
-**Easiest: install inside G1R Deluxe.** Open the app's **mod search/list**, find **Pikachu True Potential**, and install and enable it there. The mod has been submitted to the in-app mod list.
+**Easiest: install through G1R Deluxe.** Open the app's **mod search/list**, find **Pikachu True Potential**, then install and enable it. In-app availability depends on the mod list submission being approved and published.
 
-**Manual alternative:** Download the latest [release ZIP](https://github.com/twgrodd/G1R-Deluxe_Yellow_mod_Pikachu-True-Potential/releases/latest) and drag and drop it into the app, then enable the mod.
+**Manual alternative:** Download the [latest release ZIP](https://github.com/twgrodd/G1R-Deluxe_Yellow_mod_Pikachu-True-Potential/releases/latest), drag it into the app, and enable the mod.
 
-You need **Pokémon Yellow imported** into G1R Deluxe / Gen1Recomp. Start a Yellow game and receive Pikachu from Professor Oak as usual. You can nickname your partner normally. The mod does **not** include Pokémon Yellow ROM data or extracted assets.
+You must have **Pokémon Yellow imported** into G1R Deluxe / Gen1Recomp. Start a new Yellow game and receive Pikachu from Professor Oak as usual. You can nickname your partner normally. The mod does **not** include Pokémon Yellow ROM data or extracted assets.
 
-**Restart G1R Deluxe after enabling, disabling, or changing mods.** Already-learned moves are not retroactively changed.
+**Restart G1R Deluxe after enabling, disabling, or changing mods.** Already-learned moves are not changed retroactively.
 
 ---
 
