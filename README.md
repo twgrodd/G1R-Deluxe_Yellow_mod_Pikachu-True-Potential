@@ -1,4 +1,4 @@
-# Pikachu True Potential ⚡
+# Pikachu True Potential
 
 **Let your Pokémon Yellow partner Pikachu reach its true potential—without evolving!**
 
@@ -31,7 +31,7 @@ Pikachu True Potential is a mod for **Pokémon Yellow on G1R Deluxe / Gen1Recomp
 
 ### Stat comparison
 
-Compare **Gen 1 base stats** side by side. Only Oak's **⚡ True Potential Pikachu** gains base stats as it levels up; regular Pikachu and Raichu keep their usual base stats.
+Compare **Gen 1 base stats** side by side. Only Oak's **True Potential Pikachu** gains base stats as it levels up; regular Pikachu and Raichu keep their usual base stats.
 
 #### Level 5
 
@@ -94,7 +94,7 @@ The following mods were used alongside Pikachu True Potential in gameplay and **
 
 ### Installation
 
-**Easiest: install inside G1R Deluxe.** Open the app's **mod search/list**, find **Pikachu True Potential**, and install and enable it there. The mod has been submitted to the in-app mod list; **its appearance in search depends on the listing being approved/published**.
+**Easiest: install inside G1R Deluxe.** Open the app's **mod search/list**, find **Pikachu True Potential**, and install and enable it there. The mod has been submitted to the in-app mod list.
 
 **Manual alternative:** Download the latest [release ZIP](https://github.com/twgrodd/G1R-Deluxe_Yellow_mod_Pikachu-True-Potential/releases/latest) and drag and drop it into the app, then enable the mod.
 
